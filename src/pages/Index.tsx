@@ -37,8 +37,8 @@ const Index = () => {
           Built for engineering students who love to optimize everything! 🚀
         </p>
         <div className="text-xs space-y-1">
-          <p>Credits: barik.Unleshed & SRM</p>
-          <p>© {new Date().getFullYear()} All rights reserved</p>
+          <p>Credits: @barik.unleashed & @SRM</p>
+          <p>© {new Date().getFullYear()} All rights reserved 2025</p>
         </div>
       </motion.footer>
     </div>
