@@ -43,9 +43,13 @@ const Index = () => {
         transition={{ delay: 1, duration: 0.5 }}
         className="relative z-10 text-center py-8 text-muted-foreground"
       >
-        <p className="text-sm">
+        <p className="text-sm mb-2">
           Built for engineering students who love to optimize everything! 🚀
         </p>
+        <div className="text-xs space-y-1">
+          <p>Credits: barik.Unleshed & SRM</p>
+          <p>© {new Date().getFullYear()} All rights reserved</p>
+        </div>
       </motion.footer>
     </div>
   );
