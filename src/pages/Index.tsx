@@ -38,7 +38,7 @@ const Index = () => {
         </p>
         <div className="text-xs space-y-1">
           <p>Credits: @barik.unleashed & @SRM</p>
-          <p>© {new Date().getFullYear()} All rights reserved 2025</p>
+          <p>© {new Date().getFullYear()} All rights reserved </p>
         </div>
       </motion.footer>
     </div>
