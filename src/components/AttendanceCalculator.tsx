@@ -134,7 +134,7 @@ export function AttendanceCalculator() {
         
         <div>
           <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-            Engineering Attendance Calculator
+            Attendance Calculator
           </h1>
           <p className="text-muted-foreground text-lg">
             Calculate your attendance like a pro engineer! 🔧
