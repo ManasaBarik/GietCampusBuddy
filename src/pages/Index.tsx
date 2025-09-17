@@ -1,18 +1,8 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { AttendanceCalculator } from "@/components/AttendanceCalculator";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Index = () => {
-  useEffect(() => {
-    // Initialize theme from localStorage
-    const savedTheme = localStorage.getItem("theme");
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const initialTheme = savedTheme || systemTheme;
-    
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
-  }, []);
-
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Background effects */}
