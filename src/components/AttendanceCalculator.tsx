@@ -107,6 +107,13 @@ export function AttendanceCalculator() {
     setResult(null);
   };
 
+  const loadExample = (total: string, attended: string, desired: string = "80") => {
+    setTotalClasses(total);
+    setAttendedClasses(attended);
+    setDesiredPercentage(desired);
+    setResult(null);
+  };
+
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "good": return <CheckCircle className="w-6 h-6 text-success" />;
@@ -190,6 +197,45 @@ export function AttendanceCalculator() {
                 onChange={(e) => setDesiredPercentage(e.target.value)}
                 className="bg-card/50 border-border backdrop-blur-sm"
               />
+            </div>
+          </div>
+
+          {/* Example Scenarios */}
+          <div className="mt-6 pt-6 border-t border-border/50">
+            <h3 className="text-sm font-medium text-muted-foreground mb-3 flex items-center">
+              <Settings className="w-4 h-4 mr-2" />
+              Quick Examples
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => loadExample("60", "54", "80")}
+                className="bg-card/30 border-border/50 hover:bg-card/50 text-left flex-col h-auto p-3"
+              >
+                <div className="font-medium text-success">Good Student</div>
+                <div className="text-xs text-muted-foreground">54/60 classes • 90%</div>
+              </Button>
+              
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => loadExample("50", "35", "75")}
+                className="bg-card/30 border-border/50 hover:bg-card/50 text-left flex-col h-auto p-3"
+              >
+                <div className="font-medium text-warning">Average Student</div>
+                <div className="text-xs text-muted-foreground">35/50 classes • 70%</div>
+              </Button>
+              
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => loadExample("45", "20", "85")}
+                className="bg-card/30 border-border/50 hover:bg-card/50 text-left flex-col h-auto p-3"
+              >
+                <div className="font-medium text-danger">Need Help!</div>
+                <div className="text-xs text-muted-foreground">20/45 classes • 44%</div>
+              </Button>
             </div>
           </div>
 
