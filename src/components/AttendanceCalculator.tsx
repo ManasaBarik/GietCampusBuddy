@@ -200,45 +200,6 @@ export function AttendanceCalculator() {
             </div>
           </div>
 
-          {/* How to Use Guide */}
-          <div className="mt-6 pt-6 border-t border-border/50">
-            <h3 className="text-sm font-medium text-muted-foreground mb-4 flex items-center">
-              <BookOpen className="w-4 h-4 mr-2" />
-              How to Use
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-xs font-bold text-primary">1</span>
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">Enter Your Data</p>
-                  <p className="text-muted-foreground">Total classes conducted and classes you've attended</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 rounded-full bg-accent-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-xs font-bold text-accent-green">2</span>
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">Set Target %</p>
-                  <p className="text-muted-foreground">Your desired attendance percentage (usually 75-80%)</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 rounded-full bg-accent-orange/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-xs font-bold text-accent-orange">3</span>
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">Get Results</p>
-                  <p className="text-muted-foreground">See if you can bunk or need to attend more classes</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="flex gap-4 mt-8">
             <Button
               onClick={calculateAttendance}
@@ -266,6 +227,51 @@ export function AttendanceCalculator() {
             >
               <RotateCcw className="w-4 h-4" />
             </Button>
+          </div>
+        </Card>
+      </motion.div>
+
+      {/* How to Use Guide */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+      >
+        <Card className="p-6 bg-gradient-glass backdrop-blur-sm border border-glass-border shadow-glass">
+          <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
+            <BookOpen className="w-5 h-5 mr-2 text-primary" />
+            How to Use
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex items-start space-x-3">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <span className="text-sm font-bold text-primary">1</span>
+              </div>
+              <div>
+                <p className="font-medium text-foreground mb-1">Enter Your Data</p>
+                <p className="text-sm text-muted-foreground">Total classes conducted and classes you've attended</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start space-x-3">
+              <div className="w-8 h-8 rounded-full bg-accent-green/10 flex items-center justify-center flex-shrink-0">
+                <span className="text-sm font-bold text-accent-green">2</span>
+              </div>
+              <div>
+                <p className="font-medium text-foreground mb-1">Set Target %</p>
+                <p className="text-sm text-muted-foreground">Your desired attendance percentage (usually 75-80%)</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start space-x-3">
+              <div className="w-8 h-8 rounded-full bg-accent-orange/10 flex items-center justify-center flex-shrink-0">
+                <span className="text-sm font-bold text-accent-orange">3</span>
+              </div>
+              <div>
+                <p className="font-medium text-foreground mb-1">Get Results</p>
+                <p className="text-sm text-muted-foreground">See if you can bunk or need to attend more classes</p>
+              </div>
+            </div>
           </div>
         </Card>
       </motion.div>
