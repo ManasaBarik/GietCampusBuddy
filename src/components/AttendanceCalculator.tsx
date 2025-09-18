@@ -200,42 +200,42 @@ export function AttendanceCalculator() {
             </div>
           </div>
 
-          {/* Example Scenarios */}
+          {/* How to Use Guide */}
           <div className="mt-6 pt-6 border-t border-border/50">
-            <h3 className="text-sm font-medium text-muted-foreground mb-3 flex items-center">
-              <Settings className="w-4 h-4 mr-2" />
-              Quick Examples
+            <h3 className="text-sm font-medium text-muted-foreground mb-4 flex items-center">
+              <BookOpen className="w-4 h-4 mr-2" />
+              How to Use
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => loadExample("60", "54", "80")}
-                className="bg-card/30 border-border/50 hover:bg-card/50 text-left flex-col h-auto p-3"
-              >
-                <div className="font-medium text-success">Good Student</div>
-                <div className="text-xs text-muted-foreground">54/60 classes • 90%</div>
-              </Button>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div className="flex items-start space-x-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-bold text-primary">1</span>
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Enter Your Data</p>
+                  <p className="text-muted-foreground">Total classes conducted and classes you've attended</p>
+                </div>
+              </div>
               
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => loadExample("50", "35", "75")}
-                className="bg-card/30 border-border/50 hover:bg-card/50 text-left flex-col h-auto p-3"
-              >
-                <div className="font-medium text-warning">Average Student</div>
-                <div className="text-xs text-muted-foreground">35/50 classes • 70%</div>
-              </Button>
+              <div className="flex items-start space-x-3">
+                <div className="w-6 h-6 rounded-full bg-accent-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-bold text-accent-green">2</span>
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Set Target %</p>
+                  <p className="text-muted-foreground">Your desired attendance percentage (usually 75-80%)</p>
+                </div>
+              </div>
               
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => loadExample("45", "20", "85")}
-                className="bg-card/30 border-border/50 hover:bg-card/50 text-left flex-col h-auto p-3"
-              >
-                <div className="font-medium text-danger">Need Help!</div>
-                <div className="text-xs text-muted-foreground">20/45 classes • 44%</div>
-              </Button>
+              <div className="flex items-start space-x-3">
+                <div className="w-6 h-6 rounded-full bg-accent-orange/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-bold text-accent-orange">3</span>
+                </div>
+                <div>
+                  <p className="font-medium text-foreground">Get Results</p>
+                  <p className="text-muted-foreground">See if you can bunk or need to attend more classes</p>
+                </div>
+              </div>
             </div>
           </div>
 
