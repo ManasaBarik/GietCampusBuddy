@@ -6,9 +6,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent-purple/5 to-accent-green/5" />
-      <div className="absolute top-20 left-20 w-72 h-72 bg-accent-green/10 rounded-full blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent-orange/10 rounded-full blur-3xl animate-pulse-glow delay-1000" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-accent-violet/3 to-accent-emerald/3" />
+      <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-neural opacity-10 rounded-full blur-3xl animate-pulse-glow" />
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-tech opacity-15 rounded-full blur-3xl animate-pulse-glow delay-1000" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-neural opacity-5 rounded-full blur-3xl" />
       
       {/* Theme toggle */}
       <div className="absolute top-6 right-6 z-10">

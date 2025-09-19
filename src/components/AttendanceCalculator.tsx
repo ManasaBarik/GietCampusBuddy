@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calculator, RotateCcw, BookOpen, GraduationCap, Settings, CheckCircle, AlertTriangle, XCircle } from "lucide-react";
+import { Calculator, RotateCcw, BookOpen, GraduationCap, Settings, CheckCircle, AlertTriangle, XCircle, Cpu, Zap, Target, TrendingUp, Activity } from "lucide-react";
 import { CircularProgress } from "./CircularProgress";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -116,9 +116,9 @@ export function AttendanceCalculator() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "good": return <CheckCircle className="w-6 h-6 text-success" />;
-      case "warning": return <AlertTriangle className="w-6 h-6 text-warning" />;
-      case "danger": return <XCircle className="w-6 h-6 text-danger" />;
+      case "good": return <CheckCircle className="w-6 h-6 text-white" />;
+      case "warning": return <AlertTriangle className="w-6 h-6 text-white" />;
+      case "danger": return <XCircle className="w-6 h-6 text-white" />;
       default: return null;
     }
   };
@@ -129,22 +129,36 @@ export function AttendanceCalculator() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center space-y-4"
+        className="text-center space-y-6"
       >
         <motion.div
-          className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-primary shadow-glass"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="relative inline-flex items-center justify-center w-24 h-24 mx-auto"
+          animate={{ 
+            rotate: 360,
+          }}
+          transition={{ 
+            duration: 25, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
         >
-          <Settings className="w-10 h-10 text-primary-foreground" />
+          <div className="absolute inset-0 rounded-full bg-gradient-neural opacity-20 blur-xl animate-pulse-glow" />
+          <div className="relative w-20 h-20 rounded-full bg-gradient-tech shadow-neural backdrop-blur-sm border border-glass-border flex items-center justify-center">
+            <Cpu className="w-10 h-10 text-primary-foreground" />
+          </div>
         </motion.div>
         
-        <div>
-          <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-            Attendance Calculator
+        <div className="space-y-3">
+          <h1 className="text-5xl font-black bg-gradient-neural bg-clip-text text-transparent mb-2">
+            Attendance Pro
           </h1>
-          <p className="text-muted-foreground text-lg">
-            Calculate your attendance like a pro engineer! 🔧
+          <div className="flex items-center justify-center gap-2 text-xl text-muted-foreground">
+            <Zap className="w-5 h-5 text-accent-amber" />
+            <span>Engineering-Grade Calculator</span>
+            <Activity className="w-5 h-5 text-accent-emerald" />
+          </div>
+          <p className="text-muted-foreground max-w-md mx-auto">
+            Precision-engineered attendance tracking with advanced analytics and intelligent predictions
           </p>
         </div>
       </motion.div>
@@ -155,11 +169,13 @@ export function AttendanceCalculator() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <Card className="p-8 bg-gradient-glass backdrop-blur-sm border border-glass-border shadow-glass">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="space-y-2">
-              <label className="flex items-center text-sm font-medium text-foreground">
-                <BookOpen className="w-4 h-4 mr-2 text-primary" />
+        <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="space-y-3">
+              <label className="flex items-center text-sm font-semibold text-foreground">
+                <div className="w-8 h-8 rounded-lg bg-gradient-tech mr-3 flex items-center justify-center">
+                  <BookOpen className="w-4 h-4 text-white" />
+                </div>
                 Total Classes
               </label>
               <Input
@@ -167,13 +183,15 @@ export function AttendanceCalculator() {
                 placeholder="e.g., 60"
                 value={totalClasses}
                 onChange={(e) => setTotalClasses(e.target.value)}
-                className="bg-card/50 border-border backdrop-blur-sm"
+                className="bg-glass border-glass-border backdrop-blur-sm shadow-card transition-all duration-300 focus:shadow-glow focus:border-primary/50"
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="flex items-center text-sm font-medium text-foreground">
-                <GraduationCap className="w-4 h-4 mr-2 text-accent-green" />
+            <div className="space-y-3">
+              <label className="flex items-center text-sm font-semibold text-foreground">
+                <div className="w-8 h-8 rounded-lg bg-gradient-success mr-3 flex items-center justify-center">
+                  <GraduationCap className="w-4 h-4 text-white" />
+                </div>
                 Classes Attended
               </label>
               <Input
@@ -181,21 +199,23 @@ export function AttendanceCalculator() {
                 placeholder="e.g., 45"
                 value={attendedClasses}
                 onChange={(e) => setAttendedClasses(e.target.value)}
-                className="bg-card/50 border-border backdrop-blur-sm"
+                className="bg-glass border-glass-border backdrop-blur-sm shadow-card transition-all duration-300 focus:shadow-glow focus:border-primary/50"
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="flex items-center text-sm font-medium text-foreground">
-                <Settings className="w-4 h-4 mr-2 text-accent-orange" />
-                Desired %
+            <div className="space-y-3">
+              <label className="flex items-center text-sm font-semibold text-foreground">
+                <div className="w-8 h-8 rounded-lg bg-gradient-warning mr-3 flex items-center justify-center">
+                  <Target className="w-4 h-4 text-white" />
+                </div>
+                Target Percentage
               </label>
               <Input
                 type="number"
                 placeholder="80"
                 value={desiredPercentage}
                 onChange={(e) => setDesiredPercentage(e.target.value)}
-                className="bg-card/50 border-border backdrop-blur-sm"
+                className="bg-glass border-glass-border backdrop-blur-sm shadow-card transition-all duration-300 focus:shadow-glow focus:border-primary/50"
               />
             </div>
           </div>
@@ -204,7 +224,7 @@ export function AttendanceCalculator() {
             <Button
               onClick={calculateAttendance}
               disabled={isCalculating || !totalClasses || !attendedClasses}
-              className="flex-1 bg-gradient-primary hover:bg-gradient-primary/90 text-primary-foreground shadow-button"
+              className="flex-1 bg-gradient-primary hover:bg-gradient-tech text-primary-foreground shadow-button hover:shadow-glow transition-all duration-300 transform hover:scale-[1.02]"
             >
               {isCalculating ? (
                 <motion.div
@@ -212,18 +232,18 @@ export function AttendanceCalculator() {
                   transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   className="mr-2"
                 >
-                  <Calculator className="w-4 h-4" />
+                  <Calculator className="w-5 h-5" />
                 </motion.div>
               ) : (
-                <Calculator className="w-4 h-4 mr-2" />
+                <Zap className="w-5 h-5 mr-2" />
               )}
-              {isCalculating ? "Calculating..." : "Calculate"}
+              {isCalculating ? "Processing..." : "Analyze"}
             </Button>
 
             <Button
               onClick={reset}
               variant="outline"
-              className="px-6 bg-card/50 border-border backdrop-blur-sm hover:bg-card/70"
+              className="px-8 bg-glass border-glass-border backdrop-blur-sm hover:bg-glass/80 hover:border-primary/30 transition-all duration-300"
             >
               <RotateCcw className="w-4 h-4" />
             </Button>
@@ -237,39 +257,41 @@ export function AttendanceCalculator() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
       >
-        <Card className="p-6 bg-gradient-glass backdrop-blur-sm border border-glass-border shadow-glass">
-          <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
-            <BookOpen className="w-5 h-5 mr-2 text-primary" />
-            How to Use
+        <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural">
+          <h3 className="text-xl font-bold text-foreground mb-6 flex items-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-primary mr-3 flex items-center justify-center shadow-glow">
+              <BookOpen className="w-5 h-5 text-primary-foreground" />
+            </div>
+            Engineering Protocol
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-start space-x-3">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <span className="text-sm font-bold text-primary">1</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-tech flex items-center justify-center flex-shrink-0 shadow-glow">
+                <span className="text-lg font-black text-white">1</span>
               </div>
-              <div>
-                <p className="font-medium text-foreground mb-1">Enter Your Data</p>
-                <p className="text-sm text-muted-foreground">Total classes conducted and classes you've attended</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start space-x-3">
-              <div className="w-8 h-8 rounded-full bg-accent-green/10 flex items-center justify-center flex-shrink-0">
-                <span className="text-sm font-bold text-accent-green">2</span>
-              </div>
-              <div>
-                <p className="font-medium text-foreground mb-1">Set Target %</p>
-                <p className="text-sm text-muted-foreground">Your desired attendance percentage (usually 75-80%)</p>
+              <div className="space-y-2">
+                <p className="font-bold text-foreground text-lg">Input Data</p>
+                <p className="text-muted-foreground">Enter total classes conducted and your attendance count with precision</p>
               </div>
             </div>
             
-            <div className="flex items-start space-x-3">
-              <div className="w-8 h-8 rounded-full bg-accent-orange/10 flex items-center justify-center flex-shrink-0">
-                <span className="text-sm font-bold text-accent-orange">3</span>
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-success flex items-center justify-center flex-shrink-0 shadow-glow">
+                <span className="text-lg font-black text-white">2</span>
               </div>
-              <div>
-                <p className="font-medium text-foreground mb-1">Get Results</p>
-                <p className="text-sm text-muted-foreground">See if you can bunk or need to attend more classes</p>
+              <div className="space-y-2">
+                <p className="font-bold text-foreground text-lg">Set Target</p>
+                <p className="text-muted-foreground">Define your desired attendance percentage (industry standard: 75-85%)</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-warning flex items-center justify-center flex-shrink-0 shadow-glow">
+                <span className="text-lg font-black text-white">3</span>
+              </div>
+              <div className="space-y-2">
+                <p className="font-bold text-foreground text-lg">Analyze Results</p>
+                <p className="text-muted-foreground">Get intelligent insights on optimization strategies and predictions</p>
               </div>
             </div>
           </div>
@@ -296,13 +318,18 @@ export function AttendanceCalculator() {
             </div>
 
             {/* Status Message */}
-            <Card className="p-6 bg-gradient-glass backdrop-blur-sm border border-glass-border shadow-glass">
-              <div className="flex items-start space-x-4">
+            <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural">
+              <div className="flex items-start space-x-6">
                 <div className="flex-shrink-0 mt-1">
-                  {getStatusIcon(result.status)}
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-glow ${
+                    result.status === 'good' ? 'bg-gradient-success' : 
+                    result.status === 'warning' ? 'bg-gradient-warning' : 'bg-gradient-danger'
+                  }`}>
+                    {getStatusIcon(result.status)}
+                  </div>
                 </div>
                 <div className="flex-1">
-                  <p className="text-lg leading-relaxed text-foreground">
+                  <p className="text-xl leading-relaxed text-foreground font-medium">
                     {result.message}
                   </p>
                 </div>
@@ -310,39 +337,47 @@ export function AttendanceCalculator() {
             </Card>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="p-6 bg-gradient-glass backdrop-blur-sm border border-glass-border shadow-glass">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural group hover:shadow-glow transition-all duration-300">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-muted-foreground">Current Status</p>
-                    <p className="text-2xl font-bold text-foreground">
-                      {Math.round(result.currentPercentage)}% Attendance
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground flex items-center">
+                      <TrendingUp className="w-4 h-4 mr-2 text-accent-cyan" />
+                      Current Performance
                     </p>
+                    <p className="text-3xl font-black text-foreground">
+                      {Math.round(result.currentPercentage)}%
+                    </p>
+                    <p className="text-sm text-muted-foreground">Attendance Rate</p>
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                    <GraduationCap className="w-6 h-6 text-primary" />
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-tech flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300">
+                    <Activity className="w-8 h-8 text-white" />
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-6 bg-gradient-glass backdrop-blur-sm border border-glass-border shadow-glass">
+              <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural group hover:shadow-glow transition-all duration-300">
                 <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-muted-foreground">
-                      {result.canBunk > 0 ? "Classes You Can Skip" : "Classes to Attend"}
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground flex items-center">
+                      <Target className="w-4 h-4 mr-2 text-accent-emerald" />
+                      {result.canBunk > 0 ? "Optimization Buffer" : "Recovery Protocol"}
                     </p>
-                    <p className="text-2xl font-bold text-foreground">
-                      {result.canBunk > 0 ? result.canBunk : result.needToAttend} Classes
+                    <p className="text-3xl font-black text-foreground">
+                      {result.canBunk > 0 ? result.canBunk : result.needToAttend}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {result.canBunk > 0 ? "Classes Available" : "Classes Required"}
                     </p>
                   </div>
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                    result.status === 'good' ? 'bg-success/10' : 
-                    result.status === 'warning' ? 'bg-warning/10' : 'bg-danger/10'
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300 ${
+                    result.status === 'good' ? 'bg-gradient-success' : 
+                    result.status === 'warning' ? 'bg-gradient-warning' : 'bg-gradient-danger'
                   }`}>
                     {result.status === 'good' ? (
-                      <BookOpen className="w-6 h-6 text-success" />
+                      <CheckCircle className="w-8 h-8 text-white" />
                     ) : (
-                      <AlertTriangle className="w-6 h-6 text-warning" />
+                      <AlertTriangle className="w-8 h-8 text-white" />
                     )}
                   </div>
                 </div>
