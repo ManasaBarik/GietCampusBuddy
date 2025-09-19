@@ -150,16 +150,11 @@ export function AttendanceCalculator() {
         
         <div className="space-y-3">
           <h1 className="text-5xl font-black bg-gradient-neural bg-clip-text text-transparent mb-2">
-            Attendance Pro
+            Attendance Calculator
           </h1>
           <div className="flex items-center justify-center gap-2 text-xl text-muted-foreground">
-            <Zap className="w-5 h-5 text-accent-amber" />
-            <span>Engineering-Grade Calculator</span>
-            <Activity className="w-5 h-5 text-accent-emerald" />
+            <span>Calculate your attendance like a pro engineer! 🔧</span>
           </div>
-          <p className="text-muted-foreground max-w-md mx-auto">
-            Precision-engineered attendance tracking with advanced analytics and intelligent predictions
-          </p>
         </div>
       </motion.div>
 
@@ -208,7 +203,7 @@ export function AttendanceCalculator() {
                 <div className="w-8 h-8 rounded-lg bg-gradient-warning mr-3 flex items-center justify-center">
                   <Target className="w-4 h-4 text-white" />
                 </div>
-                Target Percentage
+                Desired %
               </label>
               <Input
                 type="number"
@@ -235,9 +230,9 @@ export function AttendanceCalculator() {
                   <Calculator className="w-5 h-5" />
                 </motion.div>
               ) : (
-                <Zap className="w-5 h-5 mr-2" />
+              <Calculator className="w-5 h-5 mr-2" />
               )}
-              {isCalculating ? "Processing..." : "Analyze"}
+              {isCalculating ? "Calculating..." : "Calculate"}
             </Button>
 
             <Button
@@ -262,7 +257,7 @@ export function AttendanceCalculator() {
             <div className="w-10 h-10 rounded-xl bg-gradient-primary mr-3 flex items-center justify-center shadow-glow">
               <BookOpen className="w-5 h-5 text-primary-foreground" />
             </div>
-            Engineering Protocol
+            How to Use
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex items-start space-x-4">
@@ -270,8 +265,8 @@ export function AttendanceCalculator() {
                 <span className="text-lg font-black text-white">1</span>
               </div>
               <div className="space-y-2">
-                <p className="font-bold text-foreground text-lg">Input Data</p>
-                <p className="text-muted-foreground">Enter total classes conducted and your attendance count with precision</p>
+                <p className="font-bold text-foreground text-lg">Enter Your Data</p>
+                <p className="text-muted-foreground">Total classes conducted and classes you've attended</p>
               </div>
             </div>
             
@@ -280,8 +275,8 @@ export function AttendanceCalculator() {
                 <span className="text-lg font-black text-white">2</span>
               </div>
               <div className="space-y-2">
-                <p className="font-bold text-foreground text-lg">Set Target</p>
-                <p className="text-muted-foreground">Define your desired attendance percentage (industry standard: 75-85%)</p>
+                <p className="font-bold text-foreground text-lg">Set Target %</p>
+                <p className="text-muted-foreground">Your desired attendance percentage (usually 75-80%)</p>
               </div>
             </div>
             
@@ -290,8 +285,8 @@ export function AttendanceCalculator() {
                 <span className="text-lg font-black text-white">3</span>
               </div>
               <div className="space-y-2">
-                <p className="font-bold text-foreground text-lg">Analyze Results</p>
-                <p className="text-muted-foreground">Get intelligent insights on optimization strategies and predictions</p>
+                <p className="font-bold text-foreground text-lg">Get Results</p>
+                <p className="text-muted-foreground">See if you can bunk or need to attend more classes</p>
               </div>
             </div>
           </div>
@@ -343,12 +338,11 @@ export function AttendanceCalculator() {
                   <div className="space-y-2">
                     <p className="text-sm text-muted-foreground flex items-center">
                       <TrendingUp className="w-4 h-4 mr-2 text-accent-cyan" />
-                      Current Performance
+                      Current Status
                     </p>
                     <p className="text-3xl font-black text-foreground">
-                      {Math.round(result.currentPercentage)}%
+                      {Math.round(result.currentPercentage)}% Attendance
                     </p>
-                    <p className="text-sm text-muted-foreground">Attendance Rate</p>
                   </div>
                   <div className="w-16 h-16 rounded-2xl bg-gradient-tech flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300">
                     <Activity className="w-8 h-8 text-white" />
@@ -361,13 +355,10 @@ export function AttendanceCalculator() {
                   <div className="space-y-2">
                     <p className="text-sm text-muted-foreground flex items-center">
                       <Target className="w-4 h-4 mr-2 text-accent-emerald" />
-                      {result.canBunk > 0 ? "Optimization Buffer" : "Recovery Protocol"}
+                      {result.canBunk > 0 ? "Classes You Can Skip" : "Classes to Attend"}
                     </p>
                     <p className="text-3xl font-black text-foreground">
-                      {result.canBunk > 0 ? result.canBunk : result.needToAttend}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {result.canBunk > 0 ? "Classes Available" : "Classes Required"}
+                      {result.canBunk > 0 ? result.canBunk : result.needToAttend} Classes
                     </p>
                   </div>
                   <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300 ${

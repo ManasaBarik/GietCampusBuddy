@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
 import { AttendanceCalculator } from "@/components/AttendanceCalculator";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { EngineeringBackground } from "@/components/EngineeringBackground";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Engineering Background Animations */}
+      <EngineeringBackground />
+      
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-accent-violet/3 to-accent-emerald/3" />
       <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-neural opacity-10 rounded-full blur-3xl animate-pulse-glow" />
