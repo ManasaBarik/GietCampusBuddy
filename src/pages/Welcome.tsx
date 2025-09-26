@@ -49,7 +49,7 @@ const Welcome = () => {
               className="space-y-4"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-neural bg-clip-text text-transparent">
-                Student Success Hub
+                Student's Campus Buddy
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Your all-in-one companion for academic excellence. Calculate attendance, predict CGPA, and stay on track for graduation! 🚀
