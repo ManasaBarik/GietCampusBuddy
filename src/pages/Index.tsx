@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { AttendanceCalculator } from "@/components/AttendanceCalculator";
+import { CGPACalculator } from "@/components/CGPACalculator";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { EngineeringBackground } from "@/components/EngineeringBackground";
 
@@ -21,7 +22,7 @@ const Index = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto py-12">
+      <div className="relative z-10 container mx-auto py-12 space-y-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -29,6 +30,8 @@ const Index = () => {
         >
           <AttendanceCalculator />
         </motion.div>
+        
+        <CGPACalculator />
       </div>
 
       {/* Footer */}
