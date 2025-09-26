@@ -7,10 +7,18 @@ import { Button } from "@/components/ui/button";
 import { Calculator, Target, TrendingUp } from "lucide-react";
 
 export const CGPACalculator = () => {
-  const [sgpaValues, setSgpaValues] = useState<string[]>(["", "", "", ""]);
+  const [completedSemesters, setCompletedSemesters] = useState<number>(4);
+  const [sgpaValues, setSgpaValues] = useState<string[]>(Array(4).fill(""));
   const [goalCGPA, setGoalCGPA] = useState<string>("");
   const [currentCGPA, setCurrentCGPA] = useState<number | null>(null);
   const [requiredSGPA, setRequiredSGPA] = useState<number | null>(null);
+
+  const handleCompletedSemestersChange = (value: number) => {
+    setCompletedSemesters(value);
+    setSgpaValues(Array(value).fill(""));
+    setCurrentCGPA(null);
+    setRequiredSGPA(null);
+  };
 
   const handleSgpaChange = (index: number, value: string) => {
     const newValues = [...sgpaValues];
@@ -29,20 +37,21 @@ export const CGPACalculator = () => {
     setCurrentCGPA(Math.round(cgpa * 100) / 100);
 
     // Calculate required SGPA for remaining semesters
-    if (goalCGPA && validSgpas.length === 4) {
+    if (goalCGPA && validSgpas.length === completedSemesters) {
       const goal = parseFloat(goalCGPA);
       if (!isNaN(goal) && goal >= 0 && goal <= 10) {
         const totalRequired = goal * 8;
         const currentTotal = validSgpas.reduce((sum, sgpa) => sum + sgpa, 0);
         const remainingRequired = totalRequired - currentTotal;
-        const avgRequired = remainingRequired / 4;
+        const remainingSemesters = 8 - completedSemesters;
+        const avgRequired = remainingRequired / remainingSemesters;
         setRequiredSGPA(Math.round(avgRequired * 100) / 100);
       }
     }
   };
 
   const reset = () => {
-    setSgpaValues(["", "", "", ""]);
+    setSgpaValues(Array(completedSemesters).fill(""));
     setGoalCGPA("");
     setCurrentCGPA(null);
     setRequiredSGPA(null);
@@ -68,15 +77,44 @@ export const CGPACalculator = () => {
         </CardHeader>
 
         <CardContent className="space-y-8">
+          {/* Semester Selection */}
+          <div className="space-y-4">
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-foreground mb-4">
+                How many semesters have you completed?
+              </h3>
+              <div className="flex flex-wrap justify-center gap-2">
+                {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+                  <Button
+                    key={num}
+                    variant={completedSemesters === num ? "default" : "outline"}
+                    onClick={() => handleCompletedSemestersChange(num)}
+                    className={`w-12 h-12 ${
+                      completedSemesters === num 
+                        ? "bg-gradient-neural" 
+                        : "border-tech hover:bg-tech/10"
+                    }`}
+                  >
+                    {num}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* SGPA Input Section */}
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <h3 className="text-xl font-semibold text-foreground">
-                Enter SGPA for Semesters 1 to 4
+                Enter SGPA for Semesters 1 to {completedSemesters}
               </h3>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className={`grid gap-4 ${
+              completedSemesters <= 4 
+                ? `grid-cols-1 md:grid-cols-${completedSemesters}` 
+                : "grid-cols-1 md:grid-cols-4 lg:grid-cols-4"
+            }`}>
               {sgpaValues.map((value, index) => (
                 <div key={index} className="space-y-2">
                   <Label htmlFor={`sgpa-${index + 1}`} className="text-sm font-medium">
@@ -168,7 +206,7 @@ export const CGPACalculator = () => {
                     {requiredSGPA}
                   </p>
                   <p className="text-sm text-muted-foreground mt-2">
-                    for Semesters 5–8 to reach your goal
+                    for Semesters {completedSemesters + 1}–8 to reach your goal
                   </p>
                 </div>
               )}
@@ -187,13 +225,14 @@ export const CGPACalculator = () => {
             </h4>
             <div className="space-y-2 text-muted-foreground">
               <p>
-                If you upload SGPA of your first 4 semesters and tell me your goal CGPA for graduation (8 semesters total), I'll calculate how much SGPA you'll need in the remaining semesters to reach your dream CGPA.
+                Enter your completed semesters' SGPA and your goal CGPA for graduation (8 semesters total), and I'll calculate how much SGPA you'll need in the remaining semesters to reach your dream CGPA.
               </p>
               <div className="mt-4 space-y-1 text-sm">
                 <p className="font-medium">📌 Example:</p>
-                <p>• Enter SGPA for Semesters 1 to 4</p>
+                <p>• Select how many semesters you've completed (1-7)</p>
+                <p>• Enter SGPA for those completed semesters</p>
                 <p>• Enter your Goal CGPA (like 8.5)</p>
-                <p>• I'll show you the required average SGPA for Semesters 5–8</p>
+                <p>• I'll show you the required average SGPA for remaining semesters</p>
               </div>
               <p className="mt-4 text-center font-medium text-primary">
                 This feature is specially designed for engineering students (8 semesters only). Let's make your journey stress-free and lovable 🤗
