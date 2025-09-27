@@ -89,11 +89,13 @@
     --glass-border: 215 25% 25% / 0.4;
 
     /* Enhanced Engineering Accents - Dark */
-    --accent-cyan: 185 95% 60%;
-    --accent-emerald: 160 84% 57%;
-    --accent-amber: 35 95% 65%;
-    --accent-violet: 250 90% 75%;
-    --accent-rose: 350 85% 70%;
+    --accent-cyan: 185 100% 65%;
+    --accent-emerald: 160 90% 60%;
+    --accent-amber: 35 100% 70%;
+    --accent-violet: 250 95% 80%;
+    --accent-rose: 350 90% 75%;
+    --accent-neon: 120 100% 50%;
+    --accent-electric: 200 100% 60%;
 
     /* Semantic colors - Dark */
     --success: 160 84% 57%;
@@ -112,11 +114,14 @@
 
     /* Advanced Dark Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(212 95% 65%), hsl(250 90% 75%));
-    --gradient-tech: linear-gradient(135deg, hsl(185 95% 60%), hsl(212 95% 65%));
-    --gradient-success: linear-gradient(135deg, hsl(160 84% 57%), hsl(185 95% 60%));
-    --gradient-warning: linear-gradient(135deg, hsl(35 95% 65%), hsl(50 95% 60%));
+    --gradient-tech: linear-gradient(135deg, hsl(185 100% 65%), hsl(212 95% 65%));
+    --gradient-success: linear-gradient(135deg, hsl(160 90% 60%), hsl(185 100% 65%));
+    --gradient-warning: linear-gradient(135deg, hsl(35 100% 70%), hsl(50 100% 65%));
     --gradient-glass: linear-gradient(135deg, hsl(215 25% 15% / 0.9), hsl(215 25% 12% / 0.7));
-    --gradient-neural: linear-gradient(135deg, hsl(250 90% 75%) 0%, hsl(212 95% 65%) 25%, hsl(185 95% 60%) 50%, hsl(160 84% 57%) 75%, hsl(35 95% 65%) 100%);
+    --gradient-neural: linear-gradient(135deg, hsl(250 95% 80%) 0%, hsl(212 95% 65%) 25%, hsl(185 100% 65%) 50%, hsl(160 90% 60%) 75%, hsl(35 100% 70%) 100%);
+    --gradient-cyber: linear-gradient(45deg, hsl(185 100% 65%) 0%, hsl(120 100% 50%) 25%, hsl(200 100% 60%) 50%, hsl(250 95% 80%) 75%, hsl(300 80% 70%) 100%);
+    --gradient-circuit: linear-gradient(90deg, hsl(185 100% 65%) 0%, transparent 50%, hsl(120 100% 50%) 100%);
+    --gradient-hologram: linear-gradient(135deg, hsl(185 100% 65% / 0.8), hsl(250 95% 80% / 0.6), hsl(120 100% 50% / 0.4));
 
     /* Advanced Dark Shadows */
     --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.4), 0 1px 2px hsl(212 95% 65% / 0.1);
@@ -143,34 +148,149 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "liga" 1, "calt" 1;
   }
 
-  /* Mobile Touch Enhancements */
+  /* Engineering UI Enhancements */
   .touch-manipulation {
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Glass Morphism Effect */
+  /* Advanced Glass Morphism */
   .glass-morphism {
     background: hsl(var(--glass));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid hsl(var(--glass-border));
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Enhanced Mobile Button Styles */
-  .mobile-button {
-    @apply min-h-[44px] touch-manipulation transform transition-all duration-200 active:scale-95;
+  .glass-morphism::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.1), transparent);
+    animation: shimmer 3s infinite;
   }
 
-  .mobile-button:active {
-    @apply shadow-mobile;
+  /* Engineering Grid Pattern */
+  .engineering-grid {
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Circuit Board Effect */
+  .circuit-board {
+    position: relative;
+    background: 
+      radial-gradient(circle at 25% 25%, hsl(var(--accent-cyan) / 0.3) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, hsl(var(--accent-emerald) / 0.3) 2px, transparent 2px),
+      linear-gradient(45deg, transparent 45%, hsl(var(--primary) / 0.1) 50%, transparent 55%);
+    background-size: 40px 40px, 40px 40px, 80px 80px;
+  }
+
+  /* Holographic Text Effect */
+  .holographic-text {
+    background: var(--gradient-neural);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: hologram 4s ease-in-out infinite;
+  }
+
+  /* Neon Glow Effect */
+  .neon-glow {
+    text-shadow: 
+      0 0 5px hsl(var(--accent-cyan)),
+      0 0 10px hsl(var(--accent-cyan)),
+      0 0 15px hsl(var(--accent-cyan)),
+      0 0 20px hsl(var(--accent-cyan));
+    animation: neon-pulse 2s ease-in-out infinite alternate;
+  }
+
+  /* Tech Border Animation */
+  .tech-border {
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, hsl(var(--background)), hsl(var(--background))) padding-box,
+                var(--gradient-tech) border-box;
+  }
+
+  .tech-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient-tech);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+  }
+
+  .tech-border:hover::before {
+    opacity: 0.2;
+  }
+
+  /* Cyber Button Enhancement */
+  .cyber-button {
+    position: relative;
+    background: var(--gradient-cyber);
+    border: none;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%, 20px 50%);
+    transition: all 0.3s ease;
+  }
+
+  .cyber-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px hsl(var(--primary) / 0.4);
+  }
+
+  .cyber-button::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: hsl(var(--background));
+    clip-path: inherit;
+    z-index: -1;
   }
 
   /* Smooth Scroll for Mobile */
   html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+  }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes hologram {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes neon-pulse {
+  0% { 
+    text-shadow: 
+      0 0 5px hsl(var(--accent-cyan)),
+      0 0 10px hsl(var(--accent-cyan)),
+      0 0 15px hsl(var(--accent-cyan));
+  }
+  100% { 
+    text-shadow: 
+      0 0 10px hsl(var(--accent-cyan)),
+      0 0 20px hsl(var(--accent-cyan)),
+      0 0 30px hsl(var(--accent-cyan)),
+      0 0 40px hsl(var(--accent-cyan));
   }
 }
