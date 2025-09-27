@@ -8,30 +8,29 @@ import { Link } from "react-router-dom";
 
 const AttendancePage = () => {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden circuit-board engineering-grid">
+    <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Engineering Background Animations */}
       <EngineeringBackground />
       
-      {/* Advanced Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent-violet/8 to-accent-emerald/5" />
-      <div className="absolute inset-0 bg-gradient-cyber opacity-[0.02]" />
-      <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-hologram opacity-15 rounded-full blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-neural opacity-10 rounded-full blur-3xl animate-pulse-glow delay-1000" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-cyber opacity-5 rounded-full blur-3xl animate-spin-slow" />
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-accent-violet/3 to-accent-emerald/3" />
+      <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-neural opacity-10 rounded-full blur-3xl animate-pulse-glow" />
+      <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-tech opacity-15 rounded-full blur-3xl animate-pulse-glow delay-1000" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-neural opacity-5 rounded-full blur-3xl" />
       
       {/* Header with navigation - Mobile optimized */}
       <div className="absolute top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
         <Link to="/" className="order-1">
-          <Button variant="outline" className="tech-border hover:bg-tech/10 min-h-[44px] touch-manipulation text-sm md:text-base cyber-button">
+          <Button variant="outline" className="border-tech hover:bg-tech/10 min-h-[44px] touch-manipulation text-sm md:text-base">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            <span className="holographic-text">Back to Home</span>
+            Back to Home
           </Button>
         </Link>
         
         <div className="flex items-center gap-2 md:gap-4 order-2 sm:order-2">
           <Link to="/cgpa">
-            <Button variant="outline" className="tech-border hover:bg-tech/10 min-h-[44px] touch-manipulation text-sm md:text-base">
-              <span className="holographic-text">CGPA Calculator</span>
+            <Button variant="outline" className="border-tech hover:bg-tech/10 min-h-[44px] touch-manipulation text-sm md:text-base">
+              CGPA Calculator
             </Button>
           </Link>
           <ThemeToggle />
