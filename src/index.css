@@ -60,15 +60,6 @@
     --shadow-button: 0 8px 24px hsl(212 95% 58% / 0.25), 0 2px 8px hsl(212 95% 58% / 0.15);
     --shadow-glow: 0 0 40px hsl(212 95% 58% / 0.4);
     --shadow-neural: 0 0 60px hsl(212 95% 58% / 0.3), 0 0 120px hsl(250 90% 70% / 0.2);
-    
-    /* Mobile Touch Enhancements */
-    --shadow-mobile: 0 4px 20px hsl(212 95% 58% / 0.15);
-    --shadow-elevated: 0 12px 40px hsl(212 95% 58% / 0.2), 0 4px 16px hsl(212 95% 58% / 0.1);
-    
-    /* Enhanced Tech Colors */  
-    --tech: 185 95% 55%;
-    --tech-foreground: 0 0% 100%;
-    --tech-hover: 185 95% 50%;
   }
 
   .dark {
@@ -124,15 +115,6 @@
     --shadow-button: 0 8px 24px hsl(212 95% 65% / 0.3), 0 2px 8px hsl(212 95% 65% / 0.2);
     --shadow-glow: 0 0 40px hsl(212 95% 65% / 0.5);
     --shadow-neural: 0 0 60px hsl(212 95% 65% / 0.4), 0 0 120px hsl(250 90% 75% / 0.3);
-    
-    /* Mobile Touch Enhancements - Dark */
-    --shadow-mobile: 0 4px 20px hsl(0 0% 0% / 0.3);
-    --shadow-elevated: 0 12px 40px hsl(0 0% 0% / 0.4), 0 4px 16px hsl(212 95% 65% / 0.2);
-    
-    /* Enhanced Tech Colors - Dark */
-    --tech: 185 95% 60%;
-    --tech-foreground: 215 30% 6%;
-    --tech-hover: 185 95% 65%;
   }
 }
 
@@ -143,34 +125,5 @@
 
   body {
     @apply bg-background text-foreground;
-  }
-
-  /* Mobile Touch Enhancements */
-  .touch-manipulation {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* Glass Morphism Effect */
-  .glass-morphism {
-    background: hsl(var(--glass));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--glass-border));
-  }
-
-  /* Enhanced Mobile Button Styles */
-  .mobile-button {
-    @apply min-h-[44px] touch-manipulation transform transition-all duration-200 active:scale-95;
-  }
-
-  .mobile-button:active {
-    @apply shadow-mobile;
-  }
-
-  /* Smooth Scroll for Mobile */
-  html {
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
   }
 }

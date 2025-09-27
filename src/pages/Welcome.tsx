@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Welcome = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Engineering Background Animations - Mobile optimized */}
+      {/* Engineering Background Animations */}
       <EngineeringBackground />
       
       {/* Background effects */}
@@ -18,51 +18,51 @@ const Welcome = () => {
       <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-tech opacity-15 rounded-full blur-3xl animate-pulse-glow delay-1000" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-neural opacity-5 rounded-full blur-3xl" />
       
-      {/* Theme toggle - Mobile optimized */}
-      <div className="absolute top-4 right-4 md:top-6 md:right-6 z-10">
+      {/* Theme toggle */}
+      <div className="absolute top-6 right-6 z-10">
         <ThemeToggle />
       </div>
 
-      {/* Main content - Mobile optimized */}
-      <div className="relative z-10 container mx-auto py-8 px-4 md:py-12 flex items-center justify-center min-h-screen">
+      {/* Main content */}
+      <div className="relative z-10 container mx-auto py-12 flex items-center justify-center min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-6xl w-full space-y-8 md:space-y-12"
+          className="max-w-6xl w-full space-y-12"
         >
-          {/* Hero Section - Mobile optimized */}
-          <div className="text-center space-y-4 md:space-y-6">
+          {/* Hero Section */}
+          <div className="text-center space-y-6">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="mx-auto w-20 h-20 md:w-24 md:h-24 bg-gradient-neural rounded-full flex items-center justify-center shadow-neural"
+              className="mx-auto w-24 h-24 bg-gradient-neural rounded-full flex items-center justify-center shadow-tech"
             >
-              <BookOpen className="w-10 h-10 md:w-12 md:h-12 text-white" />
+              <BookOpen className="w-12 h-12 text-white" />
             </motion.div>
             
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="space-y-3 md:space-y-4"
+              className="space-y-4"
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-neural bg-clip-text text-transparent leading-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-neural bg-clip-text text-transparent">
                 Student's Campus Buddy
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Your all-in-one companion for academic excellence. Calculate attendance, predict CGPA, and stay on track for graduation! 🚀
               </p>
             </motion.div>
           </div>
 
-          {/* Calculator Cards - Mobile optimized */}
+          {/* Calculator Cards */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mt-8 md:mt-16"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16"
           >
             {/* Attendance Calculator Card */}
             <Card className="group glass-morphism border-tech shadow-tech hover:shadow-neural transition-all duration-500 hover:scale-105">
@@ -93,9 +93,9 @@ const Welcome = () => {
                   </div>
                 </div>
                 <Link to="/attendance" className="block">
-                  <Button className="w-full bg-gradient-to-r from-primary to-accent-violet hover:shadow-neural transition-all duration-300 text-base md:text-lg py-4 md:py-6 min-h-[48px] touch-manipulation">
+                  <Button className="w-full bg-gradient-to-r from-primary to-accent-violet hover:shadow-neural transition-all duration-300 text-lg py-6">
                     Open Attendance Calculator
-                    <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+                    <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
               </CardContent>
@@ -130,9 +130,9 @@ const Welcome = () => {
                   </div>
                 </div>
                 <Link to="/cgpa" className="block">
-                  <Button className="w-full bg-gradient-to-r from-accent-emerald to-accent-violet hover:shadow-neural transition-all duration-300 text-base md:text-lg py-4 md:py-6 min-h-[48px] touch-manipulation">
+                  <Button className="w-full bg-gradient-to-r from-accent-emerald to-accent-violet hover:shadow-neural transition-all duration-300 text-lg py-6">
                     Open CGPA Calculator
-                    <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+                    <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
               </CardContent>
