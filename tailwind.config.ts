@@ -52,8 +52,9 @@ export default {
           violet: "hsl(var(--accent-violet))",
           rose: "hsl(var(--accent-rose))",
         },
-        glass: "hsl(var(--glass))",
-        "glass-border": "hsl(var(--glass-border))",
+        tech: "hsl(var(--tech))",
+        "tech-foreground": "hsl(var(--tech-foreground))",
+        "tech-hover": "hsl(var(--tech-hover))",
       },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
@@ -69,6 +70,8 @@ export default {
         button: "var(--shadow-button)",
         glow: "var(--shadow-glow)",
         neural: "var(--shadow-neural)",
+        mobile: "var(--shadow-mobile)",
+        elevated: "var(--shadow-elevated)",
       },
       borderRadius: {
         lg: "var(--radius)",
