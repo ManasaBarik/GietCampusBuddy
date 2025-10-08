@@ -15,22 +15,31 @@ const Welcome = () => {
       {/* Terminal-style background effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent-cyber/5 to-accent-code/5" />
       
-      {/* Terminal window mockup in background */}
-      <div className="absolute top-20 left-10 w-64 h-40 border border-primary/20 rounded-lg bg-card/5 backdrop-blur-sm p-2 font-mono text-xs text-primary/30 hidden lg:block">
-        <div className="flex gap-1 mb-2">
-          <div className="w-2 h-2 rounded-full bg-danger/50" />
-          <div className="w-2 h-2 rounded-full bg-warning/50" />
-          <div className="w-2 h-2 rounded-full bg-success/50" />
+      {/* Terminal window mockup in background - professional styling */}
+      <div className="absolute top-20 left-10 w-72 h-44 border border-primary/25 rounded-lg bg-card/80 backdrop-blur-md p-3 font-mono text-xs text-primary/40 hidden lg:block shadow-terminal pointer-events-none">
+        <div className="flex gap-1.5 mb-3">
+          <div className="w-2.5 h-2.5 rounded-full bg-danger/60" />
+          <div className="w-2.5 h-2.5 rounded-full bg-warning/60" />
+          <div className="w-2.5 h-2.5 rounded-full bg-success/60" />
         </div>
-        <div>$ student_portal.calculate()</div>
-        <div className="flex items-center gap-1 mt-1">
-          <span>→</span>
-          <motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>_</motion.span>
+        <div className="space-y-2">
+          <div>$ student_portal.init()</div>
+          <div className="text-success/50">✓ System ready</div>
+          <div className="flex items-center gap-1 mt-2">
+            <span className="text-primary/60">→</span>
+            <motion.span 
+              className="text-primary/70"
+              animate={{ opacity: [1, 0, 1] }} 
+              transition={{ duration: 1.2, repeat: Infinity }}
+            >
+              _
+            </motion.span>
+          </div>
         </div>
       </div>
       
       {/* Theme toggle */}
-      <div className="absolute top-6 right-6 z-10">
+      <div className="absolute top-6 right-6 z-50">
         <ThemeToggle />
       </div>
 
@@ -48,14 +57,14 @@ const Welcome = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="mx-auto w-24 h-24 bg-gradient-cyber rounded-lg flex items-center justify-center shadow-cyber border border-primary/30 relative overflow-hidden"
+              className="mx-auto w-20 h-20 bg-gradient-cyber rounded-lg flex items-center justify-center shadow-cyber border border-primary/40 relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-              <Terminal className="w-12 h-12 text-white relative z-10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 to-transparent" />
+              <Terminal className="w-10 h-10 text-white relative z-10" />
               <motion.div
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary/80"
                 animate={{ scaleX: [0, 1, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               />
             </motion.div>
             

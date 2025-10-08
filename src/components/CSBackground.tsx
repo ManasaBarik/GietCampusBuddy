@@ -20,12 +20,12 @@ export const CSBackground = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Matrix rain effect */}
-      <div className="absolute inset-0">
+      {/* Matrix rain effect - subtle and professional */}
+      <div className="absolute inset-0 opacity-40">
         {Array.from({ length: matrixColumns }).map((_, i) => (
           <motion.div
             key={`matrix-${i}`}
-            className="absolute text-primary/20 font-mono text-xs"
+            className="absolute text-primary/15 font-mono text-xs pointer-events-none"
             style={{
               left: `${(i / matrixColumns) * 100}%`,
               top: 0,
@@ -34,14 +34,14 @@ export const CSBackground = () => {
               y: ["0vh", "100vh"],
             }}
             transition={{
-              duration: 3 + Math.random() * 4,
+              duration: 4 + Math.random() * 3,
               repeat: Infinity,
               delay: Math.random() * 5,
               ease: "linear",
             }}
           >
-            {Array.from({ length: 20 }).map((_, j) => (
-              <div key={j} className="opacity-50">
+            {Array.from({ length: 15 }).map((_, j) => (
+              <div key={j} className="opacity-40">
                 {matrixChars[Math.floor(Math.random() * matrixChars.length)]}
               </div>
             ))}
@@ -49,48 +49,48 @@ export const CSBackground = () => {
         ))}
       </div>
 
-      {/* Floating CS icons */}
-      <div className="absolute inset-0">
+      {/* Floating CS icons - subtle and professional */}
+      <div className="absolute inset-0 pointer-events-none">
         {[Terminal, Code, Cpu, Database, GitBranch, Server, Binary, Command].map((Icon, index) => (
           <motion.div
             key={`icon-${index}`}
-            className="absolute text-primary/10"
+            className="absolute text-primary/8"
             style={{
               left: `${10 + (index * 12)}%`,
               top: `${20 + ((index * 17) % 60)}%`,
             }}
             animate={{
-              y: [0, -30, 0],
-              rotate: [0, 10, -10, 0],
-              opacity: [0.1, 0.2, 0.1],
+              y: [0, -20, 0],
+              rotate: [0, 5, -5, 0],
+              opacity: [0.06, 0.12, 0.06],
             }}
             transition={{
-              duration: 5 + index,
+              duration: 6 + index,
               repeat: Infinity,
               ease: "easeInOut",
             }}
           >
-            <Icon size={48 + (index % 3) * 16} />
+            <Icon size={40 + (index % 3) * 12} />
           </motion.div>
         ))}
       </div>
 
-      {/* Code snippets floating */}
-      <div className="absolute inset-0">
+      {/* Code snippets floating - more subtle */}
+      <div className="absolute inset-0 pointer-events-none">
         {codeSnippets.map((snippet, index) => (
           <motion.div
             key={`code-${index}`}
-            className="absolute font-mono text-xs text-primary/10 whitespace-nowrap"
+            className="absolute font-mono text-xs text-primary/8 whitespace-nowrap"
             style={{
               left: `${5 + (index * 15) % 85}%`,
               top: `${10 + (index * 25) % 70}%`,
             }}
             animate={{
-              x: [-20, 20, -20],
-              opacity: [0.08, 0.15, 0.08],
+              x: [-15, 15, -15],
+              opacity: [0.06, 0.12, 0.06],
             }}
             transition={{
-              duration: 8 + index,
+              duration: 10 + index,
               repeat: Infinity,
               ease: "easeInOut",
             }}

@@ -16,9 +16,9 @@ const AttendancePage = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent-cyber/5 to-accent-code/5" />
       
       {/* Header with navigation */}
-      <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-10 flex justify-between items-center gap-2 flex-wrap">
-        <Link to="/">
-          <Button variant="outline" size="sm" className="font-mono text-xs sm:text-sm">
+      <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-50 flex justify-between items-center gap-2 flex-wrap">
+        <Link to="/" className="no-underline">
+          <Button variant="outline" size="sm" className="font-mono text-xs sm:text-sm pointer-events-auto hover:bg-primary/10 hover:border-primary transition-all">
             <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
             <span className="hidden sm:inline">Home</span>
             <span className="sm:hidden">←</span>
@@ -26,8 +26,8 @@ const AttendancePage = () => {
         </Link>
         
         <div className="flex items-center gap-2">
-          <Link to="/cgpa">
-            <Button variant="outline" size="sm" className="font-mono text-xs sm:text-sm">
+          <Link to="/cgpa" className="no-underline">
+            <Button variant="outline" size="sm" className="font-mono text-xs sm:text-sm pointer-events-auto hover:bg-primary/10 hover:border-primary transition-all">
               <span className="hidden sm:inline">CGPA Calculator</span>
               <span className="sm:hidden">CGPA</span>
             </Button>
