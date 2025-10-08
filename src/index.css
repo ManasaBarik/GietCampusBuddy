@@ -2,119 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Advanced Engineering Design System */
+/* Computer Science Terminal Design System */
 
 @layer base {
   :root {
-    /* Base colors - Light theme */
-    --background: 215 25% 98%;
-    --foreground: 215 20% 15%;
+    /* Base colors - Light theme with code aesthetics */
+    --background: 210 20% 98%;
+    --foreground: 220 15% 10%;
 
-    /* Engineering Blue Spectrum */
-    --primary: 212 95% 58%;
+    /* Matrix Green & Cyber Blue Spectrum */
+    --primary: 142 76% 36%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 212 95% 52%;
-    --primary-glow: 212 100% 70%;
+    --primary-hover: 142 76% 30%;
+    --primary-glow: 142 76% 45%;
 
-    /* Advanced Glass System */
+    /* Terminal Glass System */
     --card: 0 0% 100%;
-    --card-foreground: 215 20% 15%;
-    --glass: 210 40% 98% / 0.8;
-    --glass-border: 210 40% 85% / 0.3;
+    --card-foreground: 220 15% 10%;
+    --glass: 210 30% 98% / 0.85;
+    --glass-border: 142 30% 70% / 0.25;
 
-    /* Engineering Accent Palette */
-    --accent-cyan: 185 95% 55%;
-    --accent-emerald: 160 84% 52%;
-    --accent-amber: 35 95% 60%;
-    --accent-violet: 250 90% 70%;
-    --accent-rose: 350 85% 65%;
+    /* CS Color Palette - Syntax Highlighting Inspired */
+    --accent-matrix: 142 76% 36%;
+    --accent-terminal: 180 100% 35%;
+    --accent-code: 210 100% 56%;
+    --accent-cyber: 280 100% 65%;
+    --accent-error: 0 84% 60%;
 
-    /* Semantic Engineering Colors */
-    --success: 160 84% 52%;
+    /* Semantic CS Colors */
+    --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
-    --warning: 35 95% 60%;
-    --warning-foreground: 0 0% 100%;
-    --danger: 350 85% 65%;
+    --warning: 45 100% 51%;
+    --warning-foreground: 220 15% 10%;
+    --danger: 0 84% 60%;
     --danger-foreground: 0 0% 100%;
 
-    /* Advanced UI Elements */
-    --border: 215 15% 88%;
-    --input: 215 15% 92%;
-    --ring: 212 95% 58%;
-    --muted: 215 15% 96%;
-    --muted-foreground: 215 15% 42%;
+    /* Terminal UI Elements */
+    --border: 220 13% 91%;
+    --input: 220 13% 95%;
+    --ring: 142 76% 36%;
+    --muted: 220 13% 96%;
+    --muted-foreground: 220 10% 46%;
 
-    --radius: 16px;
+    --radius: 8px;
 
-    /* Engineering Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(212 95% 58%), hsl(250 90% 70%));
-    --gradient-tech: linear-gradient(135deg, hsl(185 95% 55%), hsl(212 95% 58%));
-    --gradient-success: linear-gradient(135deg, hsl(160 84% 52%), hsl(185 95% 55%));
-    --gradient-warning: linear-gradient(135deg, hsl(35 95% 60%), hsl(50 95% 55%));
-    --gradient-glass: linear-gradient(135deg, hsl(210 40% 98% / 0.8), hsl(210 40% 95% / 0.6));
-    --gradient-neural: linear-gradient(135deg, hsl(250 90% 70%) 0%, hsl(212 95% 58%) 25%, hsl(185 95% 55%) 50%, hsl(160 84% 52%) 75%, hsl(35 95% 60%) 100%);
+    /* CS Gradients - Terminal & Matrix Inspired */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%), hsl(180 100% 35%));
+    --gradient-tech: linear-gradient(135deg, hsl(210 100% 56%), hsl(280 100% 65%));
+    --gradient-matrix: linear-gradient(180deg, hsl(142 76% 36%), hsl(142 76% 20%));
+    --gradient-terminal: linear-gradient(135deg, hsl(142 76% 25%), hsl(180 100% 25%));
+    --gradient-code: linear-gradient(135deg, hsl(210 100% 56%), hsl(142 76% 36%));
+    --gradient-cyber: linear-gradient(135deg, hsl(280 100% 65%) 0%, hsl(210 100% 56%) 50%, hsl(142 76% 36%) 100%);
 
-    /* Advanced Shadow System */
-    --shadow-glass: 0 8px 32px hsl(212 95% 58% / 0.08), 0 1px 2px hsl(212 95% 58% / 0.1);
-    --shadow-card: 0 4px 24px hsl(215 20% 15% / 0.06), 0 2px 8px hsl(215 20% 15% / 0.04);
-    --shadow-button: 0 8px 24px hsl(212 95% 58% / 0.25), 0 2px 8px hsl(212 95% 58% / 0.15);
-    --shadow-glow: 0 0 40px hsl(212 95% 58% / 0.4);
-    --shadow-neural: 0 0 60px hsl(212 95% 58% / 0.3), 0 0 120px hsl(250 90% 70% / 0.2);
+    /* CS Shadow System */
+    --shadow-terminal: 0 4px 24px hsl(142 76% 36% / 0.15), 0 0 1px hsl(142 76% 36% / 0.5);
+    --shadow-code: 0 8px 32px hsl(210 100% 56% / 0.12), inset 0 1px 0 hsl(0 0% 100% / 0.1);
+    --shadow-matrix: 0 0 30px hsl(142 76% 45% / 0.5), 0 8px 16px hsl(0 0% 0% / 0.1);
+    --shadow-cyber: 0 0 40px hsl(280 100% 65% / 0.4), 0 8px 24px hsl(0 0% 0% / 0.15);
   }
 
   .dark {
-    /* Base colors - Dark theme */
-    --background: 215 30% 6%;
-    --foreground: 215 20% 95%;
+    /* Base colors - Dark terminal theme */
+    --background: 220 25% 6%;
+    --foreground: 142 76% 85%;
 
-    /* Engineering Blue Spectrum - Dark */
-    --primary: 212 95% 65%;
-    --primary-foreground: 215 30% 6%;
-    --primary-hover: 212 95% 70%;
-    --primary-glow: 212 100% 75%;
+    /* Matrix Green & Terminal - Dark */
+    --primary: 142 76% 50%;
+    --primary-foreground: 220 25% 6%;
+    --primary-hover: 142 76% 55%;
+    --primary-glow: 142 76% 60%;
 
-    /* Advanced Dark Glass */
-    --card: 215 25% 10%;
-    --card-foreground: 215 20% 95%;
-    --glass: 215 25% 15% / 0.9;
-    --glass-border: 215 25% 25% / 0.4;
+    /* Dark Terminal Glass */
+    --card: 220 20% 10%;
+    --card-foreground: 142 76% 85%;
+    --glass: 220 20% 12% / 0.95;
+    --glass-border: 142 50% 40% / 0.3;
 
-    /* Enhanced Engineering Accents - Dark */
-    --accent-cyan: 185 95% 60%;
-    --accent-emerald: 160 84% 57%;
-    --accent-amber: 35 95% 65%;
-    --accent-violet: 250 90% 75%;
-    --accent-rose: 350 85% 70%;
+    /* CS Dark Accents */
+    --accent-matrix: 142 76% 50%;
+    --accent-terminal: 180 100% 40%;
+    --accent-code: 210 100% 60%;
+    --accent-cyber: 280 100% 70%;
+    --accent-error: 0 84% 65%;
 
-    /* Semantic colors - Dark */
-    --success: 160 84% 57%;
-    --success-foreground: 215 30% 6%;
-    --warning: 35 95% 65%;
-    --warning-foreground: 215 30% 6%;
-    --danger: 350 85% 70%;
-    --danger-foreground: 215 30% 6%;
+    /* Semantic colors - Dark terminal */
+    --success: 142 76% 50%;
+    --success-foreground: 220 25% 6%;
+    --warning: 45 100% 55%;
+    --warning-foreground: 220 25% 6%;
+    --danger: 0 84% 65%;
+    --danger-foreground: 220 25% 6%;
 
-    /* Advanced Dark UI */
-    --border: 215 25% 18%;
-    --input: 215 25% 15%;
-    --ring: 212 95% 65%;
-    --muted: 215 25% 12%;
-    --muted-foreground: 215 20% 65%;
+    /* Dark Terminal UI */
+    --border: 220 20% 18%;
+    --input: 220 20% 14%;
+    --ring: 142 76% 50%;
+    --muted: 220 20% 12%;
+    --muted-foreground: 142 30% 60%;
 
-    /* Advanced Dark Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(212 95% 65%), hsl(250 90% 75%));
-    --gradient-tech: linear-gradient(135deg, hsl(185 95% 60%), hsl(212 95% 65%));
-    --gradient-success: linear-gradient(135deg, hsl(160 84% 57%), hsl(185 95% 60%));
-    --gradient-warning: linear-gradient(135deg, hsl(35 95% 65%), hsl(50 95% 60%));
-    --gradient-glass: linear-gradient(135deg, hsl(215 25% 15% / 0.9), hsl(215 25% 12% / 0.7));
-    --gradient-neural: linear-gradient(135deg, hsl(250 90% 75%) 0%, hsl(212 95% 65%) 25%, hsl(185 95% 60%) 50%, hsl(160 84% 57%) 75%, hsl(35 95% 65%) 100%);
+    /* Dark CS Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 50%), hsl(180 100% 40%));
+    --gradient-tech: linear-gradient(135deg, hsl(210 100% 60%), hsl(280 100% 70%));
+    --gradient-matrix: linear-gradient(180deg, hsl(142 76% 40%), hsl(142 76% 15%));
+    --gradient-terminal: linear-gradient(135deg, hsl(142 76% 30%), hsl(180 100% 30%));
+    --gradient-code: linear-gradient(135deg, hsl(210 100% 60%), hsl(142 76% 50%));
+    --gradient-cyber: linear-gradient(135deg, hsl(280 100% 70%) 0%, hsl(210 100% 60%) 50%, hsl(142 76% 50%) 100%);
 
-    /* Advanced Dark Shadows */
-    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.4), 0 1px 2px hsl(212 95% 65% / 0.1);
-    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.3), 0 2px 8px hsl(0 0% 0% / 0.2);
-    --shadow-button: 0 8px 24px hsl(212 95% 65% / 0.3), 0 2px 8px hsl(212 95% 65% / 0.2);
-    --shadow-glow: 0 0 40px hsl(212 95% 65% / 0.5);
-    --shadow-neural: 0 0 60px hsl(212 95% 65% / 0.4), 0 0 120px hsl(250 90% 75% / 0.3);
+    /* Dark CS Shadows with Glow */
+    --shadow-terminal: 0 4px 24px hsl(142 76% 50% / 0.25), 0 0 2px hsl(142 76% 50% / 0.6);
+    --shadow-code: 0 8px 32px hsl(210 100% 60% / 0.2), inset 0 1px 0 hsl(142 76% 50% / 0.1);
+    --shadow-matrix: 0 0 40px hsl(142 76% 50% / 0.6), 0 8px 24px hsl(142 76% 50% / 0.2);
+    --shadow-cyber: 0 0 50px hsl(280 100% 70% / 0.5), 0 8px 32px hsl(280 100% 70% / 0.25);
   }
 }
 
