@@ -98,55 +98,55 @@ export const CSBackground = () => {
         ))}
       </div>
 
-      {/* Terminal grid pattern */}
+      {/* Professional grid pattern */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `
-            linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)
+            linear-gradient(hsl(var(--primary)) 0.5px, transparent 0.5px),
+            linear-gradient(90deg, hsl(var(--primary)) 0.5px, transparent 0.5px)
           `,
-          backgroundSize: '50px 50px',
+          backgroundSize: '60px 60px',
         }}
       />
 
-      {/* Scanning line - single optimized */}
+      {/* Subtle scanning line */}
       <motion.div
-        className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent will-change-transform"
+        className="absolute inset-x-0 h-[0.5px] bg-gradient-to-r from-transparent via-primary/8 to-transparent will-change-transform"
         animate={{
           top: ["0%", "100%"],
         }}
         transition={{
-          duration: 4,
+          duration: 6,
           repeat: Infinity,
           ease: "linear",
         }}
       />
 
-      {/* Glowing orbs - subtle ambient light */}
+      {/* Glowing orbs - professional ambient light */}
       <motion.div
-        className="absolute w-[500px] h-[500px] rounded-full bg-primary/4 blur-3xl"
-        style={{ top: "15%", left: "10%" }}
+        className="absolute w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-3xl"
+        style={{ top: "10%", left: "5%" }}
         animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.25, 0.4, 0.25],
+          scale: [1, 1.1, 1],
+          opacity: [0.15, 0.25, 0.15],
         }}
         transition={{
-          duration: 10,
+          duration: 14,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       />
       
       <motion.div
-        className="absolute w-[500px] h-[500px] rounded-full bg-accent-cyber/3 blur-3xl"
-        style={{ bottom: "15%", right: "10%" }}
+        className="absolute w-[600px] h-[600px] rounded-full bg-accent-code/[0.02] blur-3xl"
+        style={{ bottom: "10%", right: "5%" }}
         animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.35, 0.2],
+          scale: [1, 1.15, 1],
+          opacity: [0.12, 0.22, 0.12],
         }}
         transition={{
-          duration: 12,
+          duration: 16,
           repeat: Infinity,
           ease: "easeInOut",
         }}

@@ -18,18 +18,16 @@ const AttendancePage = () => {
       {/* Header with navigation */}
       <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-50 flex justify-between items-center gap-2 flex-wrap">
         <Link to="/" className="no-underline">
-          <Button variant="outline" size="sm" className="font-mono text-xs sm:text-sm pointer-events-auto hover:bg-primary/10 hover:border-primary transition-all">
-            <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-            <span className="hidden sm:inline">Home</span>
-            <span className="sm:hidden">←</span>
+          <Button variant="professional" size="sm" className="pointer-events-auto">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            <span>Home</span>
           </Button>
         </Link>
         
         <div className="flex items-center gap-2">
           <Link to="/cgpa" className="no-underline">
-            <Button variant="outline" size="sm" className="font-mono text-xs sm:text-sm pointer-events-auto hover:bg-primary/10 hover:border-primary transition-all">
-              <span className="hidden sm:inline">CGPA Calculator</span>
-              <span className="sm:hidden">CGPA</span>
+            <Button variant="professional" size="sm" className="pointer-events-auto">
+              CGPA Calculator
             </Button>
           </Link>
           <ThemeToggle />
@@ -52,10 +50,9 @@ const AttendancePage = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="relative z-10 text-center py-8 text-muted-foreground border-t border-glass-border/30 font-mono text-xs"
+        className="relative z-10 text-center py-8 text-muted-foreground border-t border-border/50"
       >
         <p className="text-sm mb-2">
-          <span className="text-primary">{"// "}</span>
           Optimized for students
         </p>
         <div className="text-xs space-y-1">

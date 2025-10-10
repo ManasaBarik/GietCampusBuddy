@@ -5,26 +5,24 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-terminal",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-glass-border bg-card hover:bg-glass hover:border-primary/50 hover:text-primary transition-all duration-300",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-glass hover:text-primary transition-all duration-300",
+        default: "bg-primary text-primary-foreground hover:bg-primary-hover shadow-sm hover:shadow-terminal",
+        destructive: "bg-danger text-danger-foreground hover:bg-danger/90 shadow-sm",
+        outline: "border-2 border-border bg-background hover:bg-card hover:border-primary/70 transition-all",
+        secondary: "bg-muted text-foreground hover:bg-muted/80",
+        ghost: "hover:bg-card hover:text-primary",
         link: "text-primary underline-offset-4 hover:underline",
-        terminal: "bg-gradient-terminal text-primary-foreground hover:shadow-matrix border border-glass-border",
-        matrix: "bg-gradient-matrix text-primary-foreground hover:shadow-matrix animate-pulse-glow",
-        code: "bg-gradient-code text-primary-foreground hover:shadow-code border border-accent-code/30",
-        cyber: "bg-gradient-cyber text-primary-foreground hover:shadow-cyber font-mono tracking-wider",
+        terminal: "bg-gradient-terminal text-white hover:shadow-terminal border border-primary/20",
+        professional: "bg-card text-foreground border-2 border-primary/30 hover:border-primary hover:bg-primary/5 shadow-sm hover:shadow-md",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "h-11 px-6 py-2",
+        sm: "h-9 rounded-lg px-4 text-xs",
+        lg: "h-12 rounded-lg px-8 text-base",
+        icon: "h-11 w-11",
       },
     },
     defaultVariants: {
