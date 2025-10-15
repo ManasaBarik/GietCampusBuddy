@@ -116,9 +116,9 @@ export function AttendanceCalculator() {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "good": return <CheckCircle className="w-6 h-6 text-white" />;
-      case "warning": return <AlertTriangle className="w-6 h-6 text-white" />;
-      case "danger": return <XCircle className="w-6 h-6 text-white" />;
+      case "good": return <CheckCircle className="w-6 h-6 text-success" />;
+      case "warning": return <AlertTriangle className="w-6 h-6 text-warning" />;
+      case "danger": return <XCircle className="w-6 h-6 text-danger" />;
       default: return null;
     }
   };
@@ -132,29 +132,20 @@ export function AttendanceCalculator() {
         className="text-center space-y-6"
       >
         <motion.div
-          className="relative inline-flex items-center justify-center w-24 h-24 mx-auto"
-          animate={{ 
-            rotate: 360,
-          }}
-          transition={{ 
-            duration: 25, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
+          className="relative inline-flex items-center justify-center w-20 h-20 mx-auto"
         >
-          <div className="absolute inset-0 rounded-full bg-gradient-neural opacity-20 blur-xl animate-pulse-glow" />
-          <div className="relative w-20 h-20 rounded-full bg-gradient-tech shadow-neural backdrop-blur-sm border border-glass-border flex items-center justify-center">
-            <Cpu className="w-10 h-10 text-primary-foreground" />
+          <div className="w-20 h-20 rounded-2xl bg-gradient-terminal shadow-terminal backdrop-blur-sm border border-primary/30 flex items-center justify-center">
+            <Calculator className="w-10 h-10 text-white" />
           </div>
         </motion.div>
         
         <div className="space-y-3">
-          <h1 className="text-5xl font-black bg-gradient-neural bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground">
             Attendance Calculator
           </h1>
-          <div className="flex items-center justify-center gap-2 text-xl text-muted-foreground">
-            <span>Calculate your attendance like a pro engineer! 🔧</span>
-          </div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Track your attendance and plan your schedule effectively
+          </p>
         </div>
       </motion.div>
 
@@ -164,12 +155,12 @@ export function AttendanceCalculator() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="space-y-3">
-              <label className="flex items-center text-sm font-semibold text-foreground">
-                <div className="w-8 h-8 rounded-lg bg-gradient-tech mr-3 flex items-center justify-center">
-                  <BookOpen className="w-4 h-4 text-white" />
+        <Card className="p-8 bg-card backdrop-blur-sm border border-border shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-sm font-medium text-foreground">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <BookOpen className="w-4 h-4 text-primary" />
                 </div>
                 Total Classes
               </label>
@@ -178,14 +169,14 @@ export function AttendanceCalculator() {
                 placeholder="e.g., 60"
                 value={totalClasses}
                 onChange={(e) => setTotalClasses(e.target.value)}
-                className="bg-glass border-glass-border backdrop-blur-sm shadow-card transition-all duration-300 focus:shadow-glow focus:border-primary/50"
+                className="h-11"
               />
             </div>
 
-            <div className="space-y-3">
-              <label className="flex items-center text-sm font-semibold text-foreground">
-                <div className="w-8 h-8 rounded-lg bg-gradient-success mr-3 flex items-center justify-center">
-                  <GraduationCap className="w-4 h-4 text-white" />
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-sm font-medium text-foreground">
+                <div className="w-8 h-8 rounded-lg bg-success/10 flex items-center justify-center">
+                  <GraduationCap className="w-4 h-4 text-success" />
                 </div>
                 Classes Attended
               </label>
@@ -194,14 +185,14 @@ export function AttendanceCalculator() {
                 placeholder="e.g., 45"
                 value={attendedClasses}
                 onChange={(e) => setAttendedClasses(e.target.value)}
-                className="bg-glass border-glass-border backdrop-blur-sm shadow-card transition-all duration-300 focus:shadow-glow focus:border-primary/50"
+                className="h-11"
               />
             </div>
 
-            <div className="space-y-3">
-              <label className="flex items-center text-sm font-semibold text-foreground">
-                <div className="w-8 h-8 rounded-lg bg-gradient-warning mr-3 flex items-center justify-center">
-                  <Target className="w-4 h-4 text-white" />
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-sm font-medium text-foreground">
+                <div className="w-8 h-8 rounded-lg bg-warning/10 flex items-center justify-center">
+                  <Target className="w-4 h-4 text-warning" />
                 </div>
                 Desired %
               </label>
@@ -210,7 +201,7 @@ export function AttendanceCalculator() {
                 placeholder="80"
                 value={desiredPercentage}
                 onChange={(e) => setDesiredPercentage(e.target.value)}
-                className="bg-glass border-glass-border backdrop-blur-sm shadow-card transition-all duration-300 focus:shadow-glow focus:border-primary/50"
+                className="h-11"
               />
             </div>
           </div>
@@ -219,7 +210,9 @@ export function AttendanceCalculator() {
             <Button
               onClick={calculateAttendance}
               disabled={isCalculating || !totalClasses || !attendedClasses}
-              className="flex-1 bg-gradient-primary hover:bg-gradient-tech text-primary-foreground shadow-button hover:shadow-glow transition-all duration-300 transform hover:scale-[1.02]"
+              variant="professional"
+              size="lg"
+              className="flex-1"
             >
               {isCalculating ? (
                 <motion.div
@@ -238,7 +231,8 @@ export function AttendanceCalculator() {
             <Button
               onClick={reset}
               variant="outline"
-              className="px-8 bg-glass border-glass-border backdrop-blur-sm hover:bg-glass/80 hover:border-primary/30 transition-all duration-300"
+              size="lg"
+              className="px-8"
             >
               <RotateCcw className="w-4 h-4" />
             </Button>
@@ -252,41 +246,41 @@ export function AttendanceCalculator() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
       >
-        <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural">
-          <h3 className="text-xl font-bold text-foreground mb-6 flex items-center">
-            <div className="w-10 h-10 rounded-xl bg-gradient-primary mr-3 flex items-center justify-center shadow-glow">
-              <BookOpen className="w-5 h-5 text-primary-foreground" />
+        <Card className="p-8 bg-card backdrop-blur-sm border border-border shadow-lg">
+          <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-primary" />
             </div>
             How to Use
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-tech flex items-center justify-center flex-shrink-0 shadow-glow">
-                <span className="text-lg font-black text-white">1</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex items-start space-x-3">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <span className="text-lg font-bold text-primary">1</span>
               </div>
-              <div className="space-y-2">
-                <p className="font-bold text-foreground text-lg">Enter Your Data</p>
-                <p className="text-muted-foreground">Total classes conducted and classes you've attended</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-success flex items-center justify-center flex-shrink-0 shadow-glow">
-                <span className="text-lg font-black text-white">2</span>
-              </div>
-              <div className="space-y-2">
-                <p className="font-bold text-foreground text-lg">Set Target %</p>
-                <p className="text-muted-foreground">Your desired attendance percentage (usually 75-80%)</p>
+              <div className="space-y-1">
+                <p className="font-semibold text-foreground">Enter Your Data</p>
+                <p className="text-sm text-muted-foreground">Total classes conducted and classes you've attended</p>
               </div>
             </div>
             
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-warning flex items-center justify-center flex-shrink-0 shadow-glow">
-                <span className="text-lg font-black text-white">3</span>
+            <div className="flex items-start space-x-3">
+              <div className="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center flex-shrink-0">
+                <span className="text-lg font-bold text-success">2</span>
               </div>
-              <div className="space-y-2">
-                <p className="font-bold text-foreground text-lg">Get Results</p>
-                <p className="text-muted-foreground">See if you can bunk or need to attend more classes</p>
+              <div className="space-y-1">
+                <p className="font-semibold text-foreground">Set Target %</p>
+                <p className="text-sm text-muted-foreground">Your desired attendance percentage (usually 75-80%)</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start space-x-3">
+              <div className="w-10 h-10 rounded-lg bg-warning/10 flex items-center justify-center flex-shrink-0">
+                <span className="text-lg font-bold text-warning">3</span>
+              </div>
+              <div className="space-y-1">
+                <p className="font-semibold text-foreground">Get Results</p>
+                <p className="text-sm text-muted-foreground">See if you can bunk or need to attend more classes</p>
               </div>
             </div>
           </div>
@@ -313,18 +307,18 @@ export function AttendanceCalculator() {
             </div>
 
             {/* Status Message */}
-            <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural">
-              <div className="flex items-start space-x-6">
-                <div className="flex-shrink-0 mt-1">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-glow ${
-                    result.status === 'good' ? 'bg-gradient-success' : 
-                    result.status === 'warning' ? 'bg-gradient-warning' : 'bg-gradient-danger'
+            <Card className="p-6 md:p-8 bg-card backdrop-blur-sm border border-border shadow-lg">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                    result.status === 'good' ? 'bg-success/10' : 
+                    result.status === 'warning' ? 'bg-warning/10' : 'bg-danger/10'
                   }`}>
                     {getStatusIcon(result.status)}
                   </div>
                 </div>
                 <div className="flex-1">
-                  <p className="text-xl leading-relaxed text-foreground font-medium">
+                  <p className="text-base md:text-lg leading-relaxed text-foreground">
                     {result.message}
                   </p>
                 </div>
@@ -332,43 +326,43 @@ export function AttendanceCalculator() {
             </Card>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural group hover:shadow-glow transition-all duration-300">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="p-6 bg-card backdrop-blur-sm border border-border shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div className="space-y-2">
-                    <p className="text-sm text-muted-foreground flex items-center">
-                      <TrendingUp className="w-4 h-4 mr-2 text-accent-cyan" />
+                    <p className="text-sm text-muted-foreground flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-primary" />
                       Current Status
                     </p>
-                    <p className="text-3xl font-black text-foreground">
-                      {Math.round(result.currentPercentage)}% Attendance
+                    <p className="text-2xl md:text-3xl font-bold text-foreground">
+                      {Math.round(result.currentPercentage)}%
                     </p>
                   </div>
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-tech flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300">
-                    <Activity className="w-8 h-8 text-white" />
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Activity className="w-7 h-7 text-primary" />
                   </div>
                 </div>
               </Card>
 
-              <Card className="p-8 bg-gradient-glass backdrop-blur-xl border border-glass-border shadow-neural group hover:shadow-glow transition-all duration-300">
+              <Card className="p-6 bg-card backdrop-blur-sm border border-border shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div className="space-y-2">
-                    <p className="text-sm text-muted-foreground flex items-center">
-                      <Target className="w-4 h-4 mr-2 text-accent-emerald" />
-                      {result.canBunk > 0 ? "Classes You Can Skip" : "Classes to Attend"}
+                    <p className="text-sm text-muted-foreground flex items-center gap-2">
+                      <Target className="w-4 h-4 text-primary" />
+                      {result.canBunk > 0 ? "Can Skip" : "Must Attend"}
                     </p>
-                    <p className="text-3xl font-black text-foreground">
-                      {result.canBunk > 0 ? result.canBunk : result.needToAttend} Classes
+                    <p className="text-2xl md:text-3xl font-bold text-foreground">
+                      {result.canBunk > 0 ? result.canBunk : result.needToAttend}
                     </p>
                   </div>
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300 ${
-                    result.status === 'good' ? 'bg-gradient-success' : 
-                    result.status === 'warning' ? 'bg-gradient-warning' : 'bg-gradient-danger'
+                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${
+                    result.status === 'good' ? 'bg-success/10' : 
+                    result.status === 'warning' ? 'bg-warning/10' : 'bg-danger/10'
                   }`}>
                     {result.status === 'good' ? (
-                      <CheckCircle className="w-8 h-8 text-white" />
+                      <CheckCircle className="w-7 h-7 text-success" />
                     ) : (
-                      <AlertTriangle className="w-8 h-8 text-white" />
+                      <AlertTriangle className="w-7 h-7 text-warning" />
                     )}
                   </div>
                 </div>

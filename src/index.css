@@ -6,37 +6,39 @@
 
 @layer base {
   :root {
-    /* Base colors - Professional Light Theme */
-    --background: 210 20% 98%;
-    --foreground: 220 15% 10%;
+    /* Base colors - Premium Professional Light Theme */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 10%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 10%;
-    --border: 217 20% 88%;
-    --input: 217 20% 88%;
-    --ring: 217 91% 60%;
-    --radius: 0.75rem;
+    --popover-foreground: 222 47% 11%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+    --radius: 0.5rem;
 
-    /* Professional Blue Spectrum */
-    --primary: 217 91% 60%;
+    /* Premium Navy & Blue Palette */
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 217 91% 55%;
-    --primary-glow: 217 91% 70%;
+    --primary-hover: 221 83% 48%;
+    --primary-glow: 221 83% 63%;
     
     --accent-matrix: 142 71% 45%;
     --accent-terminal: 199 89% 48%;
     --accent-code: 252 83% 67%;
-    --accent-cyber: 217 91% 60%;
+    --accent-cyan: 189 94% 43%;
+    --accent-emerald: 142 71% 45%;
+    --accent-cyber: 221 83% 53%;
     --accent-error: 0 84% 60%;
 
     /* Glass System */
-    --glass: 210 30% 98% / 0.85;
-    --glass-border: 217 30% 75% / 0.3;
+    --glass: 0 0% 100% / 0.7;
+    --glass-border: 220 13% 91% / 0.5;
 
     /* Neutral Palette */
-    --muted: 217 20% 95%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 220 13% 96%;
+    --muted-foreground: 220 9% 46%;
 
     /* Semantic Colors */
     --success: 142 71% 45%;
@@ -45,79 +47,105 @@
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
     
-    --danger: 0 72% 51%;
+    --danger: 0 84% 60%;
     --danger-foreground: 0 0% 100%;
 
     /* Professional Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 55%), hsl(217 91% 70%));
-    --gradient-tech: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
-    --gradient-matrix: linear-gradient(135deg, hsl(199 89% 48%), hsl(217 91% 60%));
-    --gradient-terminal: linear-gradient(135deg, hsl(217 91% 60%), hsl(199 89% 48%));
-    --gradient-code: linear-gradient(135deg, hsl(252 83% 67%), hsl(217 91% 60%));
-    --gradient-cyber: linear-gradient(135deg, hsl(217 91% 60%), hsl(252 83% 67%));
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(221 83% 63%));
+    --gradient-tech: linear-gradient(135deg, hsl(221 83% 53%), hsl(199 89% 48%));
+    --gradient-matrix: linear-gradient(135deg, hsl(142 71% 45%), hsl(189 94% 43%));
+    --gradient-terminal: linear-gradient(135deg, hsl(221 83% 53%), hsl(252 83% 67%));
+    --gradient-code: linear-gradient(135deg, hsl(252 83% 67%), hsl(221 83% 53%));
+    --gradient-cyber: linear-gradient(135deg, hsl(221 83% 53%), hsl(252 83% 67%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 55%));
+    --gradient-warning: linear-gradient(135deg, hsl(38 92% 50%), hsl(38 92% 60%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 70%));
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.7), hsl(220 13% 96% / 0.5));
+    --gradient-neural: linear-gradient(135deg, hsl(221 83% 53%), hsl(252 83% 67%));
 
-    /* Professional Shadows */
-    --shadow-terminal: 0 4px 24px -2px hsl(217 91% 60% / 0.12), 0 12px 32px -8px hsl(220 15% 10% / 0.08);
-    --shadow-code: 0 4px 20px -2px hsl(252 83% 67% / 0.1), 0 10px 28px -6px hsl(220 15% 10% / 0.08);
-    --shadow-matrix: 0 4px 24px -2px hsl(199 89% 48% / 0.12), 0 12px 32px -8px hsl(220 15% 10% / 0.08);
-    --shadow-cyber: 0 4px 20px -2px hsl(217 91% 60% / 0.1), 0 10px 28px -6px hsl(220 15% 10% / 0.08);
+    /* Premium Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -2px hsl(0 0% 0% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 10px 10px -5px hsl(0 0% 0% / 0.04);
+    --shadow-terminal: 0 4px 20px -2px hsl(221 83% 53% / 0.15), 0 8px 16px -4px hsl(0 0% 0% / 0.08);
+    --shadow-code: 0 4px 20px -2px hsl(252 83% 67% / 0.12), 0 8px 16px -4px hsl(0 0% 0% / 0.08);
+    --shadow-matrix: 0 4px 20px -2px hsl(142 71% 45% / 0.12), 0 8px 16px -4px hsl(0 0% 0% / 0.08);
+    --shadow-cyber: 0 4px 20px -2px hsl(221 83% 53% / 0.12), 0 8px 16px -4px hsl(0 0% 0% / 0.08);
+    --shadow-card: 0 2px 8px -1px hsl(0 0% 0% / 0.08);
+    --shadow-button: 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 20px hsl(221 83% 53% / 0.3);
   }
 
   .dark {
-    /* Base colors - Professional Dark Theme */
+    /* Base colors - Premium Professional Dark Theme */
     --background: 222 47% 11%;
-    --foreground: 210 20% 98%;
+    --foreground: 210 40% 98%;
     --card: 217 33% 17%;
-    --card-foreground: 210 20% 98%;
+    --card-foreground: 210 40% 98%;
     --popover: 217 33% 17%;
-    --popover-foreground: 210 20% 98%;
-    --border: 215 25% 27%;
-    --input: 215 25% 27%;
-    --ring: 217 91% 60%;
+    --popover-foreground: 210 40% 98%;
+    --border: 215 20% 25%;
+    --input: 215 20% 25%;
+    --ring: 221 83% 53%;
 
-    /* Professional Blue Spectrum */
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
-    --primary-hover: 217 91% 70%;
-    --primary-glow: 217 91% 75%;
+    /* Premium Navy & Blue Palette */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 221 83% 63%;
+    --primary-glow: 221 83% 73%;
     
-    --accent-matrix: 142 71% 45%;
-    --accent-terminal: 199 89% 48%;
+    --accent-matrix: 142 71% 55%;
+    --accent-terminal: 199 89% 58%;
     --accent-code: 252 83% 67%;
-    --accent-cyber: 217 91% 60%;
+    --accent-cyan: 189 94% 53%;
+    --accent-emerald: 142 71% 55%;
+    --accent-cyber: 221 83% 53%;
     --accent-error: 0 84% 60%;
 
     /* Glass System */
-    --glass: 217 33% 20% / 0.5;
-    --glass-border: 215 25% 35% / 0.4;
+    --glass: 217 33% 20% / 0.6;
+    --glass-border: 215 20% 35% / 0.5;
 
     /* Neutral Palette */
-    --muted: 215 25% 27%;
-    --muted-foreground: 217 10% 70%;
+    --muted: 215 20% 25%;
+    --muted-foreground: 217 13% 65%;
 
     /* Semantic Colors */
     --success: 142 71% 55%;
     --success-foreground: 222 47% 11%;
     
-    --warning: 38 92% 50%;
+    --warning: 38 92% 60%;
     --warning-foreground: 222 47% 11%;
     
-    --danger: 0 72% 51%;
-    --danger-foreground: 210 20% 98%;
+    --danger: 0 84% 65%;
+    --danger-foreground: 222 47% 11%;
 
     /* Professional Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 50%), hsl(217 91% 70%));
-    --gradient-tech: linear-gradient(180deg, hsl(217 33% 17%), hsl(222 47% 11%));
-    --gradient-matrix: linear-gradient(135deg, hsl(199 89% 48%), hsl(217 91% 60%));
-    --gradient-terminal: linear-gradient(135deg, hsl(217 91% 60%), hsl(199 89% 48%));
-    --gradient-code: linear-gradient(135deg, hsl(252 83% 67%), hsl(217 91% 60%));
-    --gradient-cyber: linear-gradient(135deg, hsl(217 91% 60%), hsl(252 83% 67%));
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(221 83% 63%));
+    --gradient-tech: linear-gradient(135deg, hsl(221 83% 53%), hsl(199 89% 58%));
+    --gradient-matrix: linear-gradient(135deg, hsl(142 71% 55%), hsl(189 94% 53%));
+    --gradient-terminal: linear-gradient(135deg, hsl(221 83% 53%), hsl(252 83% 67%));
+    --gradient-code: linear-gradient(135deg, hsl(252 83% 67%), hsl(221 83% 53%));
+    --gradient-cyber: linear-gradient(135deg, hsl(221 83% 53%), hsl(252 83% 67%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 55%), hsl(142 71% 65%));
+    --gradient-warning: linear-gradient(135deg, hsl(38 92% 60%), hsl(38 92% 70%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 65%), hsl(0 84% 75%));
+    --gradient-glass: linear-gradient(135deg, hsl(217 33% 20% / 0.6), hsl(215 20% 25% / 0.5));
+    --gradient-neural: linear-gradient(135deg, hsl(221 83% 53%), hsl(252 83% 67%));
 
-    /* Professional Shadows */
-    --shadow-terminal: 0 4px 24px -2px hsl(217 91% 60% / 0.15), 0 12px 32px -8px hsl(222 47% 5% / 0.3);
-    --shadow-code: 0 4px 20px -2px hsl(252 83% 67% / 0.12), 0 10px 28px -6px hsl(222 47% 5% / 0.3);
-    --shadow-matrix: 0 4px 24px -2px hsl(199 89% 48% / 0.15), 0 12px 32px -8px hsl(222 47% 5% / 0.3);
-    --shadow-cyber: 0 4px 20px -2px hsl(217 91% 60% / 0.12), 0 10px 28px -6px hsl(222 47% 5% / 0.3);
+    /* Premium Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.15);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.2), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -2px hsl(0 0% 0% / 0.15);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.4), 0 10px 10px -5px hsl(0 0% 0% / 0.2);
+    --shadow-terminal: 0 4px 20px -2px hsl(221 83% 53% / 0.2), 0 8px 16px -4px hsl(0 0% 0% / 0.3);
+    --shadow-code: 0 4px 20px -2px hsl(252 83% 67% / 0.18), 0 8px 16px -4px hsl(0 0% 0% / 0.3);
+    --shadow-matrix: 0 4px 20px -2px hsl(142 71% 55% / 0.18), 0 8px 16px -4px hsl(0 0% 0% / 0.3);
+    --shadow-cyber: 0 4px 20px -2px hsl(221 83% 53% / 0.18), 0 8px 16px -4px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 2px 8px -1px hsl(0 0% 0% / 0.2);
+    --shadow-button: 0 2px 4px -1px hsl(0 0% 0% / 0.2);
+    --shadow-glow: 0 0 20px hsl(221 83% 53% / 0.4);
   }
 }
 
