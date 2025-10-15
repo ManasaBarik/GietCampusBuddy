@@ -63,16 +63,16 @@ export const CGPACalculator = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
     >
-      <Card className="w-full max-w-4xl mx-auto glass-morphism border-tech shadow-tech">
+      <Card className="w-full max-w-4xl mx-auto bg-card backdrop-blur-sm border border-border shadow-lg">
         <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-gradient-neural rounded-full flex items-center justify-center">
+          <div className="mx-auto w-16 h-16 bg-gradient-terminal rounded-2xl flex items-center justify-center shadow-terminal border border-primary/30">
             <Calculator className="w-8 h-8 text-white" />
           </div>
-          <CardTitle className="text-3xl font-bold bg-gradient-neural bg-clip-text text-transparent">
+          <CardTitle className="text-3xl md:text-4xl font-bold text-foreground">
             CGPA Calculator
           </CardTitle>
-          <CardDescription className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Hi! I'm your friendly study buddy 💙. Along with attendance, I can also help you calculate your CGPA. Just enter your SGPA for each semester you've completed, and I'll instantly tell you your current CGPA.
+          <CardDescription className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Calculate your current CGPA and predict required SGPA to reach your academic goals
           </CardDescription>
         </CardHeader>
 
@@ -80,8 +80,8 @@ export const CGPACalculator = () => {
           {/* Semester Selection */}
           <div className="space-y-4">
             <div className="text-center">
-              <h3 className="text-xl font-semibold text-foreground mb-4">
-                How many semesters have you completed?
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Completed Semesters
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
                 {[1, 2, 3, 4, 5, 6, 7].map((num) => (
@@ -89,10 +89,11 @@ export const CGPACalculator = () => {
                     key={num}
                     variant={completedSemesters === num ? "default" : "outline"}
                     onClick={() => handleCompletedSemestersChange(num)}
+                    size="lg"
                     className={`w-12 h-12 ${
                       completedSemesters === num 
-                        ? "bg-gradient-neural" 
-                        : "border-tech hover:bg-tech/10"
+                        ? "" 
+                        : ""
                     }`}
                   >
                     {num}
@@ -105,9 +106,10 @@ export const CGPACalculator = () => {
           {/* SGPA Input Section */}
           <div className="space-y-6">
             <div className="text-center space-y-2">
-              <h3 className="text-xl font-semibold text-foreground">
-                Enter SGPA for Semesters 1 to {completedSemesters}
+              <h3 className="text-lg font-semibold text-foreground">
+                Enter SGPA for Each Semester
               </h3>
+              <p className="text-sm text-muted-foreground">Semesters 1 to {completedSemesters}</p>
             </div>
             
             <div className={`grid gap-4 ${
@@ -139,10 +141,10 @@ export const CGPACalculator = () => {
           {/* Goal CGPA Section */}
           <div className="space-y-4">
             <div className="text-center">
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                Enter your Goal CGPA
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                Target CGPA (Optional)
               </h3>
-              <p className="text-muted-foreground text-sm">(like 8.5)</p>
+              <p className="text-muted-foreground text-sm">Enter your goal CGPA to see required SGPA</p>
             </div>
             
             <div className="max-w-md mx-auto">
@@ -163,8 +165,8 @@ export const CGPACalculator = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               onClick={calculateCGPA}
-              variant="default"
-              className="px-8 py-3 text-lg font-medium"
+              variant="professional"
+              size="lg"
             >
               <Calculator className="w-5 h-5 mr-2" />
               Calculate CGPA
@@ -172,7 +174,7 @@ export const CGPACalculator = () => {
             <Button
               onClick={reset}
               variant="outline"
-              className="px-8 py-3 text-lg font-medium"
+              size="lg"
             >
               Reset
             </Button>
@@ -186,28 +188,32 @@ export const CGPACalculator = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
             >
               {currentCGPA !== null && (
-                <div className="bg-gradient-to-br from-primary/5 via-accent-violet/5 to-accent-emerald/5 rounded-lg p-6 border border-tech/20">
+                <div className="bg-card border border-border rounded-lg p-6 shadow-md">
                   <div className="flex items-center gap-3 mb-3">
-                    <Target className="w-6 h-6 text-primary" />
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Target className="w-5 h-5 text-primary" />
+                    </div>
                     <h3 className="text-lg font-semibold">Current CGPA</h3>
                   </div>
-                  <p className="text-3xl font-bold bg-gradient-neural bg-clip-text text-transparent">
+                  <p className="text-4xl font-bold text-primary">
                     {currentCGPA}
                   </p>
                 </div>
               )}
 
               {requiredSGPA !== null && (
-                <div className="bg-gradient-to-br from-accent-emerald/5 via-primary/5 to-accent-violet/5 rounded-lg p-6 border border-tech/20">
+                <div className="bg-card border border-border rounded-lg p-6 shadow-md">
                   <div className="flex items-center gap-3 mb-3">
-                    <TrendingUp className="w-6 h-6 text-accent-emerald" />
-                    <h3 className="text-lg font-semibold">Required Average SGPA</h3>
+                    <div className="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-success" />
+                    </div>
+                    <h3 className="text-lg font-semibold">Required Avg SGPA</h3>
                   </div>
-                  <p className="text-3xl font-bold bg-gradient-tech bg-clip-text text-transparent">
+                  <p className="text-4xl font-bold text-success">
                     {requiredSGPA}
                   </p>
                   <p className="text-sm text-muted-foreground mt-2">
-                    for Semesters {completedSemesters + 1}–8 to reach your goal
+                    for Semesters {completedSemesters + 1}–8 to reach goal
                   </p>
                 </div>
               )}
@@ -219,24 +225,24 @@ export const CGPACalculator = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-gradient-to-br from-primary/3 via-accent-violet/3 to-accent-emerald/3 rounded-lg p-6 border border-tech/20"
+            className="bg-muted/50 rounded-lg p-6 border border-border"
           >
-            <h4 className="text-lg font-semibold mb-3 text-center">
-              ✨ Bonus Feature
+            <h4 className="text-base font-semibold mb-3 text-center text-foreground">
+              📊 How It Works
             </h4>
-            <div className="space-y-2 text-muted-foreground">
+            <div className="space-y-2 text-sm text-muted-foreground">
               <p>
-                Enter your completed semesters' SGPA and your goal CGPA for graduation (8 semesters total), and I'll calculate how much SGPA you'll need in the remaining semesters to reach your dream CGPA.
+                Calculate your current CGPA based on completed semesters, and optionally predict the average SGPA needed in remaining semesters to reach your target CGPA.
               </p>
-              <div className="mt-4 space-y-1 text-sm">
-                <p className="font-medium">📌 Example:</p>
-                <p>• Select how many semesters you've completed (1-7)</p>
-                <p>• Enter SGPA for those completed semesters</p>
-                <p>• Enter your Goal CGPA (like 8.5)</p>
-                <p>• I'll show you the required average SGPA for remaining semesters</p>
+              <div className="mt-4 space-y-1.5">
+                <p className="font-medium text-foreground">Steps:</p>
+                <p>• Select completed semesters (1-7)</p>
+                <p>• Enter SGPA for each semester</p>
+                <p>• Optionally, enter target CGPA</p>
+                <p>• View current CGPA and required average SGPA</p>
               </div>
-              <p className="mt-4 text-center font-medium text-primary">
-                This feature is specially designed for engineering students (8 semesters only). Let's make your journey stress-free and lovable 🤗
+              <p className="mt-4 text-center font-medium text-primary text-xs">
+                Designed for 8-semester engineering programs
               </p>
             </div>
           </motion.div>

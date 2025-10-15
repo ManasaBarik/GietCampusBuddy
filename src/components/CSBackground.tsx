@@ -20,12 +20,12 @@ export const CSBackground = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Matrix rain effect - optimized for performance */}
-      <div className="absolute inset-0 opacity-30">
+      {/* Matrix rain effect - ultra subtle */}
+      <div className="absolute inset-0 opacity-[0.15]">
         {Array.from({ length: matrixColumns }).map((_, i) => (
           <motion.div
             key={`matrix-${i}`}
-            className="absolute text-primary/10 font-mono text-xs pointer-events-none will-change-transform"
+            className="absolute text-primary/5 font-mono text-xs pointer-events-none will-change-transform"
             style={{
               left: `${(i / matrixColumns) * 100}%`,
               top: 0,
@@ -61,7 +61,7 @@ export const CSBackground = () => {
             }}
             animate={{
               y: [0, -15, 0],
-              opacity: [0.04, 0.08, 0.04],
+              opacity: [0.02, 0.04, 0.02],
             }}
             transition={{
               duration: 8 + index * 2,
@@ -85,7 +85,7 @@ export const CSBackground = () => {
               top: `${15 + (index * 30) % 65}%`,
             }}
             animate={{
-              opacity: [0.04, 0.08, 0.04],
+              opacity: [0.02, 0.04, 0.02],
             }}
             transition={{
               duration: 12 + index * 2,
