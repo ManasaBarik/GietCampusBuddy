@@ -206,13 +206,13 @@ export function AttendanceCalculator() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8 justify-center">
             <Button
               onClick={calculateAttendance}
               disabled={isCalculating || !totalClasses || !attendedClasses}
               variant="professional"
               size="lg"
-              className="flex-1 w-full sm:w-auto"
+              className="w-full sm:w-auto"
             >
               {isCalculating ? (
                 <motion.div
