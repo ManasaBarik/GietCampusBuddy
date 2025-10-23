@@ -44,23 +44,23 @@ const Welcome = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto py-12 flex items-center justify-center min-h-screen">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-8 sm:py-12 flex items-center justify-center min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-6xl w-full space-y-12"
+          className="max-w-6xl w-full space-y-8 sm:space-y-12"
         >
           {/* Hero Section */}
-          <div className="text-center space-y-6">
+          <div className="text-center space-y-4 sm:space-y-6">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="mx-auto w-20 h-20 bg-gradient-terminal rounded-xl flex items-center justify-center shadow-terminal border border-primary/30 relative overflow-hidden"
+              className="mx-auto w-16 h-16 sm:w-20 sm:h-20 bg-gradient-terminal rounded-xl flex items-center justify-center shadow-terminal border border-primary/30 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-              <Terminal className="w-10 h-10 text-white relative z-10" />
+              <Terminal className="w-8 h-8 sm:w-10 sm:h-10 text-white relative z-10" />
               <motion.div
                 className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary/60"
                 animate={{ scaleX: [0, 1, 0] }}
@@ -72,18 +72,18 @@ const Welcome = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="space-y-4"
+              className="space-y-3 sm:space-y-4 px-4"
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground font-mono tracking-tight">
-                <Code className="inline-block w-12 h-12 md:w-16 md:h-16 mb-2 text-primary" />{" "}
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground font-mono tracking-tight">
+                <Code className="inline-block w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 text-primary" />{" "}
                 Student.Campus()<span className="text-primary/60 animate-terminal-blink">_</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
                 <span className="font-mono text-primary/80">{"{ "}</span>
                 Your professional companion for academic excellence
                 <span className="font-mono text-primary/80">{" }"}</span>
                 <br />
-                <span className="text-base opacity-70 font-mono">// Calculate. Predict. Optimize.</span>
+                <span className="text-xs sm:text-base opacity-70 font-mono">// Calculate. Predict. Optimize.</span>
               </p>
             </motion.div>
           </div>
@@ -93,7 +93,7 @@ const Welcome = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-12 sm:mt-16 px-4 sm:px-0"
           >
             {/* Attendance Calculator Card */}
             <Card className="group bg-card/60 backdrop-blur-md border-2 border-border shadow-lg hover:shadow-terminal transition-all duration-500 hover:scale-[1.02] hover:border-primary/60 overflow-hidden relative">
@@ -193,22 +193,22 @@ const Welcome = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="bg-card/60 backdrop-blur-md rounded-xl p-8 border-2 border-border shadow-lg text-center overflow-hidden relative"
+            className="bg-card/60 backdrop-blur-md rounded-xl p-4 sm:p-6 md:p-8 border-2 border-border shadow-lg text-center overflow-hidden relative mx-4 sm:mx-0"
           >
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Terminal className="w-6 h-6 text-primary" />
-              <h3 className="text-xl font-semibold">
+            <div className="flex items-center justify-center gap-3 mb-3 sm:mb-4">
+              <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+              <h3 className="text-lg sm:text-xl font-semibold">
                 Why Choose This Portal?
               </h3>
             </div>
-            <p className="text-muted-foreground text-base max-w-3xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground text-sm sm:text-base max-w-3xl mx-auto leading-relaxed">
               Designed for students who think strategically. Our tools help you optimize your academic performance 
               through data-driven insights, ensuring you achieve success while managing your time effectively.
             </p>
-            <div className="mt-6 flex justify-center gap-4 flex-wrap">
-              <span className="px-4 py-2 bg-primary/10 border border-primary/40 rounded-lg text-sm font-medium text-primary">Data-Driven</span>
-              <span className="px-4 py-2 bg-accent-terminal/10 border border-accent-terminal/40 rounded-lg text-sm font-medium text-accent-terminal">Optimized</span>
-              <span className="px-4 py-2 bg-success/10 border border-success/40 rounded-lg text-sm font-medium text-success">Student-First</span>
+            <div className="mt-4 sm:mt-6 flex justify-center gap-2 sm:gap-4 flex-wrap">
+              <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 border border-primary/40 rounded-lg text-xs sm:text-sm font-medium text-primary">Data-Driven</span>
+              <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-accent-terminal/10 border border-accent-terminal/40 rounded-lg text-xs sm:text-sm font-medium text-accent-terminal">Optimized</span>
+              <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-success/10 border border-success/40 rounded-lg text-xs sm:text-sm font-medium text-success">Student-First</span>
             </div>
           </motion.div>
         </motion.div>

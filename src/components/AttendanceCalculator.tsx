@@ -124,26 +124,26 @@ export function AttendanceCalculator() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 space-y-8">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center space-y-6"
+        className="text-center space-y-4 sm:space-y-6"
       >
         <motion.div
-          className="relative inline-flex items-center justify-center w-20 h-20 mx-auto"
+          className="relative inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 mx-auto"
         >
-          <div className="w-20 h-20 rounded-2xl bg-gradient-terminal shadow-terminal backdrop-blur-sm border border-primary/30 flex items-center justify-center">
-            <Calculator className="w-10 h-10 text-white" />
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-terminal shadow-terminal backdrop-blur-sm border border-primary/30 flex items-center justify-center">
+            <Calculator className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
           </div>
         </motion.div>
         
-        <div className="space-y-3">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground">
+        <div className="space-y-2 sm:space-y-3">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-foreground px-4">
             Attendance Calculator
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Track your attendance and plan your schedule effectively
           </p>
         </div>
@@ -155,8 +155,8 @@ export function AttendanceCalculator() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <Card className="p-8 bg-card backdrop-blur-sm border border-border shadow-lg">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="p-4 sm:p-6 md:p-8 bg-card backdrop-blur-sm border border-border shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-sm font-medium text-foreground">
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -206,13 +206,13 @@ export function AttendanceCalculator() {
             </div>
           </div>
 
-          <div className="flex gap-4 mt-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8">
             <Button
               onClick={calculateAttendance}
               disabled={isCalculating || !totalClasses || !attendedClasses}
               variant="professional"
               size="lg"
-              className="flex-1"
+              className="flex-1 w-full sm:w-auto"
             >
               {isCalculating ? (
                 <motion.div
@@ -232,7 +232,7 @@ export function AttendanceCalculator() {
               onClick={reset}
               variant="outline"
               size="lg"
-              className="px-8"
+              className="w-full sm:w-auto sm:px-8"
             >
               <RotateCcw className="w-4 h-4" />
             </Button>
@@ -246,14 +246,14 @@ export function AttendanceCalculator() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
       >
-        <Card className="p-8 bg-card backdrop-blur-sm border border-border shadow-lg">
-          <h3 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-primary" />
+        <Card className="p-4 sm:p-6 md:p-8 bg-card backdrop-blur-sm border border-border shadow-lg">
+          <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6 flex items-center gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </div>
             How to Use
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             <div className="flex items-start space-x-3">
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <span className="text-lg font-bold text-primary">1</span>
@@ -307,8 +307,8 @@ export function AttendanceCalculator() {
             </div>
 
             {/* Status Message */}
-            <Card className="p-6 md:p-8 bg-card backdrop-blur-sm border border-border shadow-lg">
-              <div className="flex items-start gap-4">
+            <Card className="p-4 sm:p-6 md:p-8 bg-card backdrop-blur-sm border border-border shadow-lg">
+              <div className="flex items-start gap-3 sm:gap-4">
                 <div className="flex-shrink-0">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                     result.status === 'good' ? 'bg-success/10' : 
@@ -326,7 +326,7 @@ export function AttendanceCalculator() {
             </Card>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <Card className="p-6 bg-card backdrop-blur-sm border border-border shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <div className="space-y-2">
