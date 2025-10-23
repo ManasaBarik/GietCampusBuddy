@@ -62,25 +62,26 @@ export const CGPACalculator = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
+      className="px-4 sm:px-6"
     >
       <Card className="w-full max-w-4xl mx-auto bg-card backdrop-blur-sm border border-border shadow-lg">
-        <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-gradient-terminal rounded-2xl flex items-center justify-center shadow-terminal border border-primary/30">
-            <Calculator className="w-8 h-8 text-white" />
+        <CardHeader className="text-center space-y-4 px-4 sm:px-6">
+          <div className="mx-auto w-14 h-14 sm:w-16 sm:h-16 bg-gradient-terminal rounded-2xl flex items-center justify-center shadow-terminal border border-primary/30">
+            <Calculator className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
           </div>
-          <CardTitle className="text-3xl md:text-4xl font-bold text-foreground">
+          <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
             CGPA Calculator
           </CardTitle>
-          <CardDescription className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <CardDescription className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Calculate your current CGPA and predict required SGPA to reach your academic goals
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-8">
+        <CardContent className="space-y-6 sm:space-y-8 px-4 sm:px-6">
           {/* Semester Selection */}
           <div className="space-y-4">
             <div className="text-center">
-              <h3 className="text-lg font-semibold text-foreground mb-4">
+              <h3 className="text-base sm:text-lg font-semibold text-foreground mb-4">
                 Completed Semesters
               </h3>
               <div className="flex flex-wrap justify-center gap-2">
@@ -113,9 +114,9 @@ export const CGPACalculator = () => {
             </div>
             
             <div className={`grid gap-4 ${
-              completedSemesters <= 4 
-                ? `grid-cols-1 md:grid-cols-${completedSemesters}` 
-                : "grid-cols-1 md:grid-cols-4 lg:grid-cols-4"
+              completedSemesters <= 3 
+                ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3' 
+                : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
             }`}>
               {sgpaValues.map((value, index) => (
                 <div key={index} className="space-y-2">
@@ -162,11 +163,12 @@ export const CGPACalculator = () => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Button
               onClick={calculateCGPA}
               variant="professional"
               size="lg"
+              className="w-full sm:w-auto"
             >
               <Calculator className="w-5 h-5 mr-2" />
               Calculate CGPA
@@ -175,6 +177,7 @@ export const CGPACalculator = () => {
               onClick={reset}
               variant="outline"
               size="lg"
+              className="w-full sm:w-auto"
             >
               Reset
             </Button>
