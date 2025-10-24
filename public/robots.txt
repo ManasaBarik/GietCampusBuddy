@@ -7,3 +7,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://gietcampusbuddy.vercel.app/sitemap.xml
