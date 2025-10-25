@@ -189,13 +189,13 @@ export const SGPACalculator = () => {
                               <SelectValue placeholder="Grade" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="O">O (Outstanding - 10)</SelectItem>
-                              <SelectItem value="A">A (Excellent - 9)</SelectItem>
-                              <SelectItem value="B">B (Very Good - 8)</SelectItem>
-                              <SelectItem value="C">C (Good - 7)</SelectItem>
-                              <SelectItem value="D">D (Average - 6)</SelectItem>
-                              <SelectItem value="E">E (Pass - 5)</SelectItem>
-                              <SelectItem value="F">F (Fail - 0)</SelectItem>
+                              <SelectItem value="O">O (9-10) - Outstanding</SelectItem>
+                              <SelectItem value="A">A (8-9) - Excellent</SelectItem>
+                              <SelectItem value="B">B (7-8) - Very Good</SelectItem>
+                              <SelectItem value="C">C (6-7) - Good</SelectItem>
+                              <SelectItem value="D">D (5-6) - Average</SelectItem>
+                              <SelectItem value="E">E (4-5) - Pass</SelectItem>
+                              <SelectItem value="F">F (0-4) - Fail</SelectItem>
                               <SelectItem value="Satisfacto">Satisfacto</SelectItem>
                             </SelectContent>
                           </Select>
@@ -278,13 +278,13 @@ export const SGPACalculator = () => {
             <div>
               <strong>Grade Points:</strong>
               <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
-                <li>O (Outstanding) = 10 points</li>
-                <li>A (Excellent) = 9 points</li>
-                <li>B (Very Good) = 8 points</li>
-                <li>C (Good) = 7 points</li>
-                <li>D (Average) = 6 points</li>
-                <li>E (Pass) = 5 points</li>
-                <li>F (Fail) = 0 points</li>
+                <li>O (9-10 marks) = 10 points - Outstanding</li>
+                <li>A (8-9 marks) = 9 points - Excellent</li>
+                <li>B (7-8 marks) = 8 points - Very Good</li>
+                <li>C (6-7 marks) = 7 points - Good</li>
+                <li>D (5-6 marks) = 6 points - Average</li>
+                <li>E (4-5 marks) = 5 points - Pass</li>
+                <li>F (0-4 marks) = 0 points - Fail</li>
                 <li>Satisfacto = Not counted in SGPA</li>
               </ul>
             </div>
