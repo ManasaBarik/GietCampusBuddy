@@ -24,10 +24,15 @@ const CGPAPage = () => {
           </Button>
         </Link>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <Link to="/attendance" className="no-underline">
             <Button variant="professional" size="sm" className="pointer-events-auto">
-              Attendance Calculator
+              Attendance
+            </Button>
+          </Link>
+          <Link to="/sgpa" className="no-underline">
+            <Button variant="professional" size="sm" className="pointer-events-auto">
+              SGPA
             </Button>
           </Link>
           <ThemeToggle />

@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { AttendanceCalculator } from "@/components/AttendanceCalculator";
+import { SGPACalculator } from "@/components/SGPACalculator";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CSBackground } from "@/components/CSBackground";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const AttendancePage = () => {
+const SGPAPage = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* CS Background Animations */}
@@ -25,14 +25,14 @@ const AttendancePage = () => {
         </Link>
         
         <div className="flex items-center gap-2 flex-wrap">
+          <Link to="/attendance" className="no-underline">
+            <Button variant="professional" size="sm" className="pointer-events-auto">
+              Attendance
+            </Button>
+          </Link>
           <Link to="/cgpa" className="no-underline">
             <Button variant="professional" size="sm" className="pointer-events-auto">
               CGPA
-            </Button>
-          </Link>
-          <Link to="/sgpa" className="no-underline">
-            <Button variant="professional" size="sm" className="pointer-events-auto">
-              SGPA
             </Button>
           </Link>
           <ThemeToggle />
@@ -46,7 +46,7 @@ const AttendancePage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <AttendanceCalculator />
+          <SGPACalculator />
         </motion.div>
       </div>
 
@@ -69,4 +69,4 @@ const AttendancePage = () => {
   );
 };
 
-export default AttendancePage;
+export default SGPAPage;

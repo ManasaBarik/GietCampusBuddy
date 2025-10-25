@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CSBackground } from "@/components/CSBackground";
-import { Calculator, TrendingUp, Terminal, Code, ArrowRight, Braces } from "lucide-react";
+import { Calculator, TrendingUp, Terminal, Code, ArrowRight, Braces, GraduationCap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Welcome = () => {
@@ -93,7 +93,7 @@ const Welcome = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mt-12 sm:mt-16 px-4 sm:px-0"
+            className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 px-4 sm:px-0"
           >
             {/* Attendance Calculator Card */}
             <Card className="group bg-card/60 backdrop-blur-md border-2 border-border shadow-lg hover:shadow-terminal transition-all duration-500 hover:scale-[1.02] hover:border-primary/60 overflow-hidden relative">
@@ -134,6 +134,52 @@ const Welcome = () => {
                 <Link to="/attendance" className="block">
                   <Button variant="terminal" className="w-full text-base py-6 font-mono group-hover:shadow-terminal">
                     <Terminal className="mr-2 w-5 h-5" />
+                    Execute Calculator
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* SGPA Calculator Card */}
+            <Card className="group bg-card/60 backdrop-blur-md border-2 border-border shadow-lg hover:shadow-terminal transition-all duration-500 hover:scale-[1.02] hover:border-primary/60 overflow-hidden relative">
+              <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-terminal border-b-2 border-border/50 flex items-center px-4 gap-2">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-danger/80" />
+                  <div className="w-3 h-3 rounded-full bg-warning/80" />
+                  <div className="w-3 h-3 rounded-full bg-success/80" />
+                </div>
+                <span className="text-xs font-mono text-foreground/70 ml-2">sgpa.calculate</span>
+              </div>
+              <CardHeader className="text-center space-y-4 pb-6 pt-14">
+                <div className="mx-auto w-18 h-18 bg-gradient-terminal rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-terminal border-2 border-primary/40">
+                  <GraduationCap className="w-9 h-9 text-white" />
+                </div>
+                <CardTitle className="text-2xl font-bold text-foreground">
+                  SGPA Calculator
+                </CardTitle>
+                <CardDescription className="text-base text-muted-foreground leading-relaxed">
+                  Calculate semester-wise SGPA by branch and semester with subject-level precision.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6 pb-8">
+                <div className="space-y-3 text-sm text-muted-foreground bg-muted/30 p-5 rounded-lg border border-border/50">
+                  <div className="flex items-center gap-3">
+                    <span className="text-success text-lg">✓</span>
+                    <span>Select branch & semester</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-primary text-lg">✓</span>
+                    <span>Custom subject credits</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-accent-terminal text-lg">✓</span>
+                    <span>Grade-based calculation</span>
+                  </div>
+                </div>
+                <Link to="/sgpa" className="block">
+                  <Button variant="terminal" className="w-full text-base py-6 font-mono group-hover:shadow-terminal">
+                    <GraduationCap className="mr-2 w-5 h-5" />
                     Execute Calculator
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
