@@ -16,11 +16,11 @@ const gradePoints: {
   [key: string]: number;
 } = {
   "O": 10,
-  "E": 9,
-  "A": 8,
-  "B": 7,
-  "C": 6,
-  "D": 5,
+  "A": 9,
+  "B": 8,
+  "C": 7,
+  "D": 6,
+  "E": 5,
   "F": 0,
   "Satisfacto": 0
 };
