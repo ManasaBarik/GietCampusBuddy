@@ -2,10 +2,11 @@
   "name": "GIET Campus Buddy",
   "short_name": "CampusBuddy",
   "description": "Your all-in-one campus companion for GIET University",
-  "start_url": "/",
+  "start_url": "/?source=pwa",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "/pwa-192x192.png",
@@ -16,7 +17,8 @@
     {
       "src": "/pwa-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "screenshots": [
