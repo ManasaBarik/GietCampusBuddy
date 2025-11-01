@@ -9,7 +9,7 @@ import AttendancePage from "./pages/AttendancePage";
 import CGPAPage from "./pages/CGPAPage";
 import SGPAPage from "./pages/SGPAPage";
 import NotFound from "./pages/NotFound";
-import InstallButton from "@/components/InstallButton";
+import InstallPrompt from "@/components/InstallPrompt";
 import { register as registerServiceWorker } from "@/utils/serviceWorkerRegistration";
 
 const queryClient = new QueryClient();
@@ -48,7 +48,7 @@ const App = () => {
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <InstallButton />
+          <InstallPrompt />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
