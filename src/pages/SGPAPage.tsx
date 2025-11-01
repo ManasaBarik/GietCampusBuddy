@@ -40,7 +40,7 @@ const SGPAPage = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto py-20">
+      <div className="relative z-10 container mx-auto px-4 py-20 sm:py-24">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

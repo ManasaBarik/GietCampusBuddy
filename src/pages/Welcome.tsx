@@ -44,7 +44,7 @@ const Welcome = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-8 sm:py-12 flex items-center justify-center min-h-screen">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-16 sm:py-12 flex items-center justify-center min-h-screen">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,15 +52,15 @@ const Welcome = () => {
           className="max-w-6xl w-full space-y-8 sm:space-y-12"
         >
           {/* Hero Section */}
-          <div className="text-center space-y-4 sm:space-y-6">
+          <div className="text-center space-y-3 sm:space-y-6">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="mx-auto w-16 h-16 sm:w-20 sm:h-20 bg-gradient-terminal rounded-xl flex items-center justify-center shadow-terminal border border-primary/30 relative overflow-hidden"
+              className="mx-auto w-14 h-14 sm:w-20 sm:h-20 bg-gradient-terminal rounded-xl flex items-center justify-center shadow-terminal border border-primary/30 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-              <Terminal className="w-8 h-8 sm:w-10 sm:h-10 text-white relative z-10" />
+              <Terminal className="w-7 h-7 sm:w-10 sm:h-10 text-white relative z-10" />
               <motion.div
                 className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary/60"
                 animate={{ scaleX: [0, 1, 0] }}
@@ -72,18 +72,18 @@ const Welcome = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="space-y-3 sm:space-y-4 px-4"
+              className="space-y-2 sm:space-y-4 px-4"
             >
-              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-foreground font-mono tracking-tight">
-                <Code className="inline-block w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 text-primary" />{" "}
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-mono tracking-tight leading-tight">
+                <Code className="inline-block w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-1 text-primary" />{" "}
                 Student.Campus()<span className="text-primary/60 animate-terminal-blink">_</span>
               </h1>
-              <p className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
+              <p className="text-sm sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
                 <span className="font-mono text-primary/80">{"{ "}</span>
                 Your professional companion for academic excellence
                 <span className="font-mono text-primary/80">{" }"}</span>
-                <br />
-                <span className="text-xs sm:text-base opacity-70 font-mono">// Calculate. Predict. Optimize.</span>
+                <br className="hidden sm:block" />
+                <span className="text-xs sm:text-sm opacity-70 font-mono block mt-1">// Calculate. Predict. Optimize.</span>
               </p>
             </motion.div>
           </div>
@@ -93,7 +93,7 @@ const Welcome = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 px-4 sm:px-0"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12 px-2 sm:px-0"
           >
             {/* Attendance Calculator Card */}
             <Card className="group bg-card/60 backdrop-blur-md border-2 border-border shadow-lg hover:shadow-terminal transition-all duration-500 hover:scale-[1.02] hover:border-primary/60 overflow-hidden relative">
@@ -105,19 +105,19 @@ const Welcome = () => {
                 </div>
                 <span className="text-xs font-mono text-foreground/70 ml-2">attendance.calc</span>
               </div>
-              <CardHeader className="text-center space-y-4 pb-6 pt-14">
-                <div className="mx-auto w-18 h-18 bg-gradient-terminal rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-terminal border-2 border-primary/40">
-                  <Calculator className="w-9 h-9 text-white" />
+              <CardHeader className="text-center space-y-3 pb-4 pt-12 sm:pt-14">
+                <div className="mx-auto w-14 h-14 sm:w-16 sm:h-16 bg-gradient-terminal rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-terminal border-2 border-primary/40">
+                  <Calculator className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-foreground">
+                <CardTitle className="text-xl sm:text-2xl font-bold text-foreground">
                   Attendance Calculator
                 </CardTitle>
-                <CardDescription className="text-base text-muted-foreground leading-relaxed">
-                  Never worry about attendance again. Calculate skippable classes or required attendance with precision.
+                <CardDescription className="text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
+                  Calculate skippable classes or required attendance with precision.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6 pb-8">
-                <div className="space-y-3 text-sm text-muted-foreground bg-muted/30 p-5 rounded-lg border border-border/50">
+              <CardContent className="space-y-4 sm:space-y-6 pb-6 sm:pb-8 px-4 sm:px-6">
+                <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground bg-muted/30 p-3 sm:p-5 rounded-lg border border-border/50">
                   <div className="flex items-center gap-3">
                     <span className="text-success text-lg">✓</span>
                     <span>Track percentage in real-time</span>
@@ -132,10 +132,11 @@ const Welcome = () => {
                   </div>
                 </div>
                 <Link to="/attendance" className="block">
-                  <Button variant="terminal" className="w-full text-base py-6 font-mono group-hover:shadow-terminal">
-                    <Terminal className="mr-2 w-5 h-5" />
-                    Execute Calculator
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                  <Button variant="terminal" className="w-full text-sm sm:text-base py-5 sm:py-6 font-mono group-hover:shadow-terminal">
+                    <Terminal className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="hidden sm:inline">Execute Calculator</span>
+                    <span className="sm:hidden">Open Calculator</span>
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                   </Button>
                 </Link>
               </CardContent>
@@ -151,19 +152,19 @@ const Welcome = () => {
                 </div>
                 <span className="text-xs font-mono text-foreground/70 ml-2">sgpa.calculate</span>
               </div>
-              <CardHeader className="text-center space-y-4 pb-6 pt-14">
-                <div className="mx-auto w-18 h-18 bg-gradient-terminal rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-terminal border-2 border-primary/40">
-                  <GraduationCap className="w-9 h-9 text-white" />
+              <CardHeader className="text-center space-y-3 pb-4 pt-12 sm:pt-14">
+                <div className="mx-auto w-14 h-14 sm:w-16 sm:h-16 bg-gradient-terminal rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-terminal border-2 border-primary/40">
+                  <GraduationCap className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-foreground">
+                <CardTitle className="text-xl sm:text-2xl font-bold text-foreground">
                   SGPA Calculator
                 </CardTitle>
-                <CardDescription className="text-base text-muted-foreground leading-relaxed">
-                  Calculate semester-wise SGPA by branch and semester with subject-level precision.
+                <CardDescription className="text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
+                  Calculate semester-wise SGPA with subject-level precision.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6 pb-8">
-                <div className="space-y-3 text-sm text-muted-foreground bg-muted/30 p-5 rounded-lg border border-border/50">
+              <CardContent className="space-y-4 sm:space-y-6 pb-6 sm:pb-8 px-4 sm:px-6">
+                <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground bg-muted/30 p-3 sm:p-5 rounded-lg border border-border/50">
                   <div className="flex items-center gap-3">
                     <span className="text-success text-lg">✓</span>
                     <span>Select branch & semester</span>
@@ -178,10 +179,11 @@ const Welcome = () => {
                   </div>
                 </div>
                 <Link to="/sgpa" className="block">
-                  <Button variant="terminal" className="w-full text-base py-6 font-mono group-hover:shadow-terminal">
-                    <GraduationCap className="mr-2 w-5 h-5" />
-                    Execute Calculator
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                  <Button variant="terminal" className="w-full text-sm sm:text-base py-5 sm:py-6 font-mono group-hover:shadow-terminal">
+                    <GraduationCap className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="hidden sm:inline">Execute Calculator</span>
+                    <span className="sm:hidden">Open Calculator</span>
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                   </Button>
                 </Link>
               </CardContent>
@@ -197,19 +199,19 @@ const Welcome = () => {
                 </div>
                 <span className="text-xs font-mono text-foreground/70 ml-2">cgpa.compute</span>
               </div>
-              <CardHeader className="text-center space-y-4 pb-6 pt-14">
-                <div className="mx-auto w-18 h-18 bg-gradient-terminal rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-terminal border-2 border-primary/40">
-                  <TrendingUp className="w-9 h-9 text-white" />
+              <CardHeader className="text-center space-y-3 pb-4 pt-12 sm:pt-14">
+                <div className="mx-auto w-14 h-14 sm:w-16 sm:h-16 bg-gradient-terminal rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-terminal border-2 border-primary/40">
+                  <TrendingUp className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-foreground">
+                <CardTitle className="text-xl sm:text-2xl font-bold text-foreground">
                   CGPA Calculator
                 </CardTitle>
-                <CardDescription className="text-base text-muted-foreground leading-relaxed">
-                  Plan your academic trajectory. Calculate current CGPA and predict required SGPA for your goals.
+                <CardDescription className="text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
+                  Calculate current CGPA and predict required SGPA for your goals.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6 pb-8">
-                <div className="space-y-3 text-sm text-muted-foreground bg-muted/30 p-5 rounded-lg border border-border/50">
+              <CardContent className="space-y-4 sm:space-y-6 pb-6 sm:pb-8 px-4 sm:px-6">
+                <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground bg-muted/30 p-3 sm:p-5 rounded-lg border border-border/50">
                   <div className="flex items-center gap-3">
                     <span className="text-success text-lg">✓</span>
                     <span>Compute from all semesters</span>
@@ -224,10 +226,11 @@ const Welcome = () => {
                   </div>
                 </div>
                 <Link to="/cgpa" className="block">
-                  <Button variant="terminal" className="w-full text-base py-6 font-mono group-hover:shadow-code">
-                    <Braces className="mr-2 w-5 h-5" />
-                    Execute Calculator
-                    <ArrowRight className="ml-2 w-5 h-5" />
+                  <Button variant="terminal" className="w-full text-sm sm:text-base py-5 sm:py-6 font-mono group-hover:shadow-code">
+                    <Braces className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="hidden sm:inline">Execute Calculator</span>
+                    <span className="sm:hidden">Open Calculator</span>
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
                   </Button>
                 </Link>
               </CardContent>
