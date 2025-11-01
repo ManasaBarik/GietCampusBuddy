@@ -1,19 +1,26 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { VitePWA } from "vite-plugin-pwa";
+import { defineConfig, type UserConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+import { fileURLToPath } from 'node:url';
+
+declare const process: {
+  env: {
+    VITE_DISABLE_SWC?: string;
+  };
+};
 
 // Force Babel to be used instead of SWC
-process.env.VITE_DISABLE_SWC = "true";
+process.env.VITE_DISABLE_SWC = 'true';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode }): UserConfig => ({
   server: {
     host: "::",
     port: 8080,
   },
   build: {
-    target: 'esnext',
-    minify: 'esbuild',
+    target: 'es2020',
+    minify: 'terser',
     cssMinify: true,
     sourcemap: mode === 'development',
     rollupOptions: {
@@ -33,7 +40,6 @@ export default defineConfig(({ mode }) => ({
         plugins: ['@emotion/babel-plugin'],
       },
     }),
-    mode === "development" && componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: [
@@ -153,8 +159,11 @@ export default defineConfig(({ mode }) => ({
   ].filter(Boolean),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+  },
+  define: {
+    'process.env': {}
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'date-fns'],
