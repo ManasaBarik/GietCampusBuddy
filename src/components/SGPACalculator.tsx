@@ -16,11 +16,11 @@ const gradePoints: {
   [key: string]: number;
 } = {
   "O": 10,
-  "A": 9,
-  "B": 8,
-  "C": 7,
-  "D": 6,
-  "E": 5,
+  "E": 9,
+  "A": 8,
+  "B": 7,
+  "C": 6,
+  "D": 5,
   "F": 0,
   "Satisfacto": 0
 };
@@ -184,11 +184,11 @@ export const SGPACalculator = () => {
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="O">O (90-100%) - Outstanding</SelectItem>
-                              <SelectItem value="A">A (80-90%) - Excellent</SelectItem>
-                              <SelectItem value="B">B (70-80%) - Very Good</SelectItem>
-                              <SelectItem value="C">C (60-70%) - Good</SelectItem>
-                              <SelectItem value="D">D (50-60%) - Average</SelectItem>
-                              <SelectItem value="E">E (40-50%) - Pass</SelectItem>
+                              <SelectItem value="E">E (80-90%) - Excellent</SelectItem>
+                              <SelectItem value="A">A (70-80%) - Very Good</SelectItem>
+                              <SelectItem value="B">B (60-70%) - Good</SelectItem>
+                              <SelectItem value="C">C (50-60%) - Average</SelectItem>
+                              <SelectItem value="D">D (40-50%) - Pass</SelectItem>
                               <SelectItem value="F">F (Below 40%) - Fail</SelectItem>
                               <SelectItem value="Satisfacto">Satisfacto</SelectItem>
                             </SelectContent>
@@ -266,11 +266,11 @@ export const SGPACalculator = () => {
               <strong>Grade Points:</strong>
               <ul className="list-disc list-inside mt-2 space-y-1 ml-4">
                 <li>O (90-100%) = 10 points - Outstanding</li>
-                <li>A (80-90%) = 9 points - Excellent</li>
-                <li>B (70-80%) = 8 points - Very Good</li>
-                <li>C (60-70%) = 7 points - Good</li>
-                <li>D (50-60%) = 6 points - Average</li>
-                <li>E (40-50%) = 5 points - Pass</li>
+                <li>E (80-90%) = 9 points - Excellent</li>
+                <li>A (70-80%) = 8 points - Very Good</li>
+                <li>B (60-70%) = 7 points - Good</li>
+                <li>C (50-60%) = 6 points - Average</li>
+                <li>D (40-50%) = 5 points - Pass</li>
                 <li>F (Below 40%) = 0 points - Fail</li>
                 <li>Satisfactory = Not counted in SGPA</li>
               </ul>
