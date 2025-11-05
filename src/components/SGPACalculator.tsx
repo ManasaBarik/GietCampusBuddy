@@ -202,7 +202,7 @@ export const SGPACalculator = () => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Button onClick={calculateSGPA} className="flex-1 h-12 text-base font-semibold" size="lg">
+                  <Button onClick={calculateSGPA} variant="professional" className="flex-1 h-12 text-base font-semibold" size="lg">
                     <Calculator className="mr-2 h-5 w-5" />
                     Calculate SGPA
                   </Button>
