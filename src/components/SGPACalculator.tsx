@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calculator, RotateCcw, GraduationCap } from "lucide-react";
 import { toast } from "sonner";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+
 interface Subject {
   name: string;
   credits: string;
@@ -25,9 +27,9 @@ const gradePoints: {
   "Satisfacto": 0
 };
 export const SGPACalculator = () => {
-  const [branch, setBranch] = useState("");
-  const [semester, setSemester] = useState("");
-  const [subjects, setSubjects] = useState<Subject[]>(Array.from({
+  const [branch, setBranch] = useLocalStorage<string>("sgpa_branch", "");
+  const [semester, setSemester] = useLocalStorage<string>("sgpa_semester", "");
+  const [subjects, setSubjects] = useLocalStorage<Subject[]>("sgpa_subjects", Array.from({
     length: 12
   }, () => ({
     name: "",

@@ -5,6 +5,7 @@ import { CircularProgress } from "./CircularProgress";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 interface CalculationResult {
   currentPercentage: number;
@@ -15,9 +16,9 @@ interface CalculationResult {
 }
 
 export function AttendanceCalculator() {
-  const [totalClasses, setTotalClasses] = useState<string>("");
-  const [attendedClasses, setAttendedClasses] = useState<string>("");
-  const [desiredPercentage, setDesiredPercentage] = useState<string>("80");
+  const [totalClasses, setTotalClasses] = useLocalStorage<string>("attendance_totalClasses", "");
+  const [attendedClasses, setAttendedClasses] = useLocalStorage<string>("attendance_attendedClasses", "");
+  const [desiredPercentage, setDesiredPercentage] = useLocalStorage<string>("attendance_desiredPercentage", "80");
   const [result, setResult] = useState<CalculationResult | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 

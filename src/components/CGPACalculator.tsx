@@ -5,17 +5,22 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Calculator, Target, TrendingUp } from "lucide-react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 export const CGPACalculator = () => {
-  const [completedSemesters, setCompletedSemesters] = useState<number>(4);
-  const [sgpaValues, setSgpaValues] = useState<string[]>(Array(4).fill(""));
-  const [goalCGPA, setGoalCGPA] = useState<string>("");
+  const [completedSemesters, setCompletedSemesters] = useLocalStorage<number>("cgpa_completedSemesters", 4);
+  const [sgpaValues, setSgpaValues] = useLocalStorage<string[]>("cgpa_sgpaValues", Array(4).fill(""));
+  const [goalCGPA, setGoalCGPA] = useLocalStorage<string>("cgpa_goalCGPA", "");
   const [currentCGPA, setCurrentCGPA] = useState<number | null>(null);
   const [requiredSGPA, setRequiredSGPA] = useState<number | null>(null);
 
   const handleCompletedSemestersChange = (value: number) => {
     setCompletedSemesters(value);
-    setSgpaValues(Array(value).fill(""));
+    // Keep existing values when possible, fill new ones with empty string
+    const newValues = Array(value).fill("").map((_, index) => 
+      index < sgpaValues.length ? sgpaValues[index] : ""
+    );
+    setSgpaValues(newValues);
     setCurrentCGPA(null);
     setRequiredSGPA(null);
   };
