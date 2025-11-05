@@ -1,12 +1,48 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CSBackground } from "@/components/CSBackground";
-import { Calculator, TrendingUp, Terminal, Code, ArrowRight, Braces, GraduationCap } from "lucide-react";
+import { Calculator, TrendingUp, Terminal, Code, ArrowRight, Braces, GraduationCap, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { toast } from "sonner";
 
 const Welcome = () => {
+  const [showClearDialog, setShowClearDialog] = useState(false);
+
+  const handleClearAllData = () => {
+    // Clear all localStorage keys related to calculators
+    const keysToRemove = [
+      'attendance_totalClasses',
+      'attendance_attendedClasses',
+      'attendance_desiredPercentage',
+      'sgpa_branch',
+      'sgpa_semester',
+      'sgpa_subjects',
+      'cgpa_completedSemesters',
+      'cgpa_sgpaValues',
+      'cgpa_goalCGPA'
+    ];
+    
+    keysToRemove.forEach(key => {
+      localStorage.removeItem(key);
+    });
+    
+    setShowClearDialog(false);
+    toast.success("All saved calculator data has been cleared!");
+  };
+
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
       {/* CS Background Animations */}
@@ -273,11 +309,51 @@ const Welcome = () => {
         <p className="text-sm mb-2">
           Built for students who strive for excellence
         </p>
-        <div className="text-xs space-y-1">
+        <div className="text-xs space-y-3">
           <p>Credits: @barik.unleashed & @SRM</p>
           <p>© {new Date().getFullYear()} All rights reserved</p>
+          
+          {/* Clear All Data Button */}
+          <div className="pt-2">
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => setShowClearDialog(true)}
+              className="text-xs text-muted-foreground/60 hover:text-destructive hover:bg-destructive/10 transition-colors"
+            >
+              <Trash2 className="w-3 h-3 mr-1.5" />
+              Clear All Saved Data
+            </Button>
+          </div>
         </div>
       </motion.footer>
+
+      {/* Clear Data Confirmation Dialog */}
+      <AlertDialog open={showClearDialog} onOpenChange={setShowClearDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Clear All Saved Data?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete all your saved calculator data including:
+              <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
+                <li>Attendance calculator inputs</li>
+                <li>SGPA calculator inputs (subjects, credits, grades)</li>
+                <li>CGPA calculator inputs (semester data)</li>
+              </ul>
+              <p className="mt-3 font-semibold">This action cannot be undone.</p>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={handleClearAllData}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              Clear All Data
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
