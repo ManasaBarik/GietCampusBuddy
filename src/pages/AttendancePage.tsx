@@ -40,11 +40,12 @@ const AttendancePage = () => {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto px-4 py-20 sm:py-24">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-16 sm:py-20 flex items-center justify-center min-h-screen">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full"
         >
           <AttendanceCalculator />
         </motion.div>
@@ -58,11 +59,11 @@ const AttendancePage = () => {
         className="relative z-10 text-center py-8 text-muted-foreground border-t border-border/50"
       >
         <p className="text-sm mb-2">
-          Optimized for students
+          Built for students who strive for excellence
         </p>
         <div className="text-xs space-y-1">
           <p>Credits: @barik.unleashed & @SRM</p>
-          <p>© {new Date().getFullYear()}</p>
+          <p>© {new Date().getFullYear()} All rights reserved</p>
         </div>
       </motion.footer>
     </div>
