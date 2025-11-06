@@ -27,6 +27,47 @@ export default defineConfig(({ mode }) => ({
         start_url: "/",
         scope: "/",
         categories: ["education", "productivity", "utilities"],
+        shortcuts: [
+          {
+            name: "Attendance Calculator",
+            short_name: "Attendance",
+            description: "Calculate attendance percentage and track classes",
+            url: "/attendance",
+            icons: [
+              {
+                src: "/pwa-192x192.png",
+                sizes: "192x192",
+                type: "image/png"
+              }
+            ]
+          },
+          {
+            name: "SGPA Calculator",
+            short_name: "SGPA",
+            description: "Calculate semester grade point average",
+            url: "/sgpa",
+            icons: [
+              {
+                src: "/pwa-192x192.png",
+                sizes: "192x192",
+                type: "image/png"
+              }
+            ]
+          },
+          {
+            name: "CGPA Calculator",
+            short_name: "CGPA",
+            description: "Calculate cumulative grade point average",
+            url: "/cgpa",
+            icons: [
+              {
+                src: "/pwa-192x192.png",
+                sizes: "192x192",
+                type: "image/png"
+              }
+            ]
+          }
+        ],
         icons: [
           {
             src: "/pwa-192x192.png",
