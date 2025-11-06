@@ -1,179 +1,38 @@
-import { motion } from "framer-motion";
-import { Terminal, Code, Cpu, Database, GitBranch, Server, Binary, Command } from "lucide-react";
+import { memo } from "react";
 
-export const CSBackground = () => {
-  // Matrix rain characters - reduced for performance
-  const matrixChars = "01";
-  const matrixColumns = 12;
-  
-  // Code snippets for background
-  const codeSnippets = [
-    "function calculateCGPA() {",
-    "const result = sgpa.reduce(",
-    "if (attendance >= 75%)",
-    "return Math.round(cgpa);",
-    "await fetchData();",
-    "console.log('Success');",
-    "const avg = total / count;",
-    "} catch (error) {",
-  ];
-
+export const CSBackground = memo(() => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Matrix rain effect - ultra subtle */}
-      <div className="absolute inset-0 opacity-[0.15]">
-        {Array.from({ length: matrixColumns }).map((_, i) => (
-          <motion.div
-            key={`matrix-${i}`}
-            className="absolute text-primary/5 font-mono text-xs pointer-events-none will-change-transform"
-            style={{
-              left: `${(i / matrixColumns) * 100}%`,
-              top: 0,
-            }}
-            animate={{
-              y: ["0vh", "100vh"],
-            }}
-            transition={{
-              duration: 6 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 8,
-              ease: "linear",
-            }}
-          >
-            {Array.from({ length: 10 }).map((_, j) => (
-              <div key={j} className="opacity-30">
-                {matrixChars[Math.floor(Math.random() * matrixChars.length)]}
-              </div>
-            ))}
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Floating CS icons - optimized */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[Terminal, Code, Cpu, Database].map((Icon, index) => (
-          <motion.div
-            key={`icon-${index}`}
-            className="absolute text-primary/6"
-            style={{
-              left: `${15 + (index * 22)}%`,
-              top: `${25 + ((index * 20) % 50)}%`,
-            }}
-            animate={{
-              y: [0, -15, 0],
-              opacity: [0.02, 0.04, 0.02],
-            }}
-            transition={{
-              duration: 8 + index * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <Icon size={44 + (index % 2) * 8} />
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Code snippets - reduced and optimized */}
-      <div className="absolute inset-0 pointer-events-none">
-        {codeSnippets.slice(0, 4).map((snippet, index) => (
-          <motion.div
-            key={`code-${index}`}
-            className="absolute font-mono text-xs text-primary/6 whitespace-nowrap"
-            style={{
-              left: `${10 + (index * 25) % 80}%`,
-              top: `${15 + (index * 30) % 65}%`,
-            }}
-            animate={{
-              opacity: [0.02, 0.04, 0.02],
-            }}
-            transition={{
-              duration: 12 + index * 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            {snippet}
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Professional grid pattern */}
+      {/* Professional grid pattern - pure CSS, no JS */}
       <div 
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
-            linear-gradient(hsl(var(--primary)) 0.5px, transparent 0.5px),
-            linear-gradient(90deg, hsl(var(--primary)) 0.5px, transparent 0.5px)
+            linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px)
           `,
-          backgroundSize: '60px 60px',
+          backgroundSize: '50px 50px',
         }}
       />
 
-      {/* Subtle scanning line */}
-      <motion.div
-        className="absolute inset-x-0 h-[0.5px] bg-gradient-to-r from-transparent via-primary/8 to-transparent will-change-transform"
-        animate={{
-          top: ["0%", "100%"],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      />
-
-      {/* Glowing orbs - professional ambient light */}
-      <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full bg-primary/[0.03] blur-3xl"
-        style={{ top: "10%", left: "5%" }}
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.15, 0.25, 0.15],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      {/* Static gradient orbs - CSS only, no animation */}
+      <div
+        className="absolute w-[800px] h-[800px] rounded-full bg-primary/[0.04] blur-3xl"
+        style={{ top: "5%", left: "0%", transform: "translate(-20%, -20%)" }}
       />
       
-      <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full bg-accent-code/[0.02] blur-3xl"
-        style={{ bottom: "10%", right: "5%" }}
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.12, 0.22, 0.12],
-        }}
-        transition={{
-          duration: 16,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      <div
+        className="absolute w-[700px] h-[700px] rounded-full bg-accent-code/[0.03] blur-3xl"
+        style={{ bottom: "5%", right: "0%", transform: "translate(20%, 20%)" }}
       />
 
-      {/* Binary dots - reduced for performance */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 15 }).map((_, i) => (
-          <motion.div
-            key={`dot-${i}`}
-            className="absolute w-1 h-1 rounded-full bg-primary/15"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              scale: [0, 1, 0],
-              opacity: [0, 0.8, 0],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 8,
-            }}
-          />
-        ))}
-      </div>
+      {/* Minimal animated glow - single CSS animation */}
+      <div 
+        className="absolute inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-primary/10 to-transparent animate-pulse"
+        style={{ top: "30%" }}
+      />
     </div>
   );
-};
+});
+
+CSBackground.displayName = "CSBackground";
