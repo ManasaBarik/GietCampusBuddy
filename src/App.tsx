@@ -7,6 +7,7 @@ import Welcome from "./pages/Welcome";
 import AttendancePage from "./pages/AttendancePage";
 import CGPAPage from "./pages/CGPAPage";
 import SGPAPage from "./pages/SGPAPage";
+import InstallPWA from "./pages/InstallPWA";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/attendance" element={<AttendancePage />} />
           <Route path="/cgpa" element={<CGPAPage />} />
           <Route path="/sgpa" element={<SGPAPage />} />
+          <Route path="/install" element={<InstallPWA />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

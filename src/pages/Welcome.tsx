@@ -122,6 +122,22 @@ const Welcome = () => {
                 <span className="text-xs sm:text-sm opacity-70 font-mono block mt-1">// Calculate. Predict. Optimize.</span>
               </p>
             </motion.div>
+            
+            {/* Install PWA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="flex justify-center"
+            >
+              <Link to="/install">
+                <Button variant="outline" size="lg" className="gap-2 border-primary/30 hover:border-primary/60 hover:bg-primary/5">
+                  <Terminal className="w-5 h-5" />
+                  Install App
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </motion.div>
           </div>
 
           {/* Calculator Cards */}
