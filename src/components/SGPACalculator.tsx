@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calculator, RotateCcw, GraduationCap } from "lucide-react";
+import { Calculator, RotateCcw, GraduationCap, FileCheck } from "lucide-react";
 import { toast } from "sonner";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
@@ -14,6 +14,74 @@ interface Subject {
   credits: string;
   grade: string;
 }
+
+// Subject data for different branches, academic years, and semesters
+const subjectData: {
+  [key: string]: {
+    [key: string]: {
+      [key: string]: Array<{ name: string; credits: string }>;
+    };
+  };
+} = {
+  "2023-27": {
+    "CSEDS": {
+      "1": [
+        { name: "Engineering Physics", credits: "3" },
+        { name: "Engineering Mathematics-I", credits: "4" },
+        { name: "Basic Electrical and Electronics Engineering", credits: "3" },
+        { name: "Basic Electrical and Electronics Engineering Lab", credits: "1" },
+        { name: "Engineering Graphics and Design", credits: "2" },
+        { name: "Programming for Problem Solving", credits: "3" },
+        { name: "Programming for Problem Solving Lab", credits: "2" },
+        { name: "Communicative English and Soft Skills", credits: "2" },
+        { name: "Human Values and Professional Ethics", credits: "1" },
+        { name: "Communicative English and Soft Skills Lab", credits: "1" },
+        { name: "Induction Program", credits: "0" },
+      ],
+      "2": [
+        { name: "Engineering Mathematics - II", credits: "4" },
+        { name: "Elements of Mechanical Engineering", credits: "4" },
+        { name: "Dietetics and Nutrition", credits: "1" },
+        { name: "Engineering Workshop", credits: "2" },
+        { name: "Fundamental of Web Technology", credits: "3" },
+        { name: "Data Structures and Algorithms", credits: "3" },
+        { name: "Data Structures and Algorithms LAB", credits: "2" },
+        { name: "Communicative English and Technical Communication", credits: "2" },
+        { name: "Communicative English and Technical Communication LAB", credits: "1" },
+        { name: "NSS / YOGA", credits: "0" },
+      ],
+      "3": [
+        { name: "Summer Internship - I", credits: "1" },
+        { name: "Learning Project - I", credits: "1" },
+        { name: "Intermediate Communication Skills and Critical Thinking", credits: "1" },
+        { name: "Intermediate Communication Skills and Critical Thinking Laboratory", credits: "1" },
+        { name: "Applied Statistics", credits: "4" },
+        { name: "Digital Electronics", credits: "3" },
+        { name: "Digital Electronics Laboratory", credits: "1" },
+        { name: "Database Management Systems", credits: "3" },
+        { name: "Object Oriented Programming through Java", credits: "3" },
+        { name: "Database Management Systems Laboratory", credits: "1" },
+        { name: "Object Oriented Programming through Java Laboratory", credits: "1" },
+        { name: "Introduction to Data Science", credits: "3" },
+        { name: "Environmental Sciences", credits: "0" },
+      ],
+      "4": [
+        { name: "Advance Communication Skills and Professional Ethics", credits: "1" },
+        { name: "Advance Communication Skills and Professional Ethics Lab", credits: "1" },
+        { name: "Python Programming for Data Science", credits: "3" },
+        { name: "Computer Organization & Architecture", credits: "3" },
+        { name: "Design and Analysis of Algorithms", credits: "3" },
+        { name: "Operating Systems", credits: "3" },
+        { name: "Python Programming Lab", credits: "1" },
+        { name: "Design and Analysis of Algorithms Lab", credits: "1" },
+        { name: "Data Analytics Tool Laboratory", credits: "1" },
+        { name: "Predictive Modeling and Analytics", credits: "3" },
+        { name: "Learning Project-II", credits: "1" },
+        { name: "Essence of Indian Traditional Knowledge", credits: "0" },
+      ],
+    },
+  },
+};
 const gradePoints: {
   [key: string]: number;
 } = {
@@ -31,13 +99,33 @@ export const SGPACalculator = () => {
   const [branch, setBranch] = useLocalStorage<string>("sgpa_branch", "");
   const [semester, setSemester] = useLocalStorage<string>("sgpa_semester", "");
   const [subjects, setSubjects] = useLocalStorage<Subject[]>("sgpa_subjects", Array.from({
-    length: 12
+    length: 13
   }, () => ({
     name: "",
     credits: "",
     grade: ""
   })));
   const [sgpa, setSgpa] = useState<number | null>(null);
+
+  // Auto-fill subjects when academic year, branch, and semester are selected
+  useEffect(() => {
+    if (academicYear && branch && semester) {
+      const semesterData = subjectData[academicYear]?.[branch]?.[semester];
+      if (semesterData) {
+        const newSubjects = semesterData.map(subject => ({
+          name: subject.name,
+          credits: subject.credits,
+          grade: ""
+        }));
+        // Fill remaining slots with empty subjects
+        while (newSubjects.length < 13) {
+          newSubjects.push({ name: "", credits: "", grade: "" });
+        }
+        setSubjects(newSubjects);
+        toast.success("Subjects auto-filled for your selection!");
+      }
+    }
+  }, [academicYear, branch, semester]);
   const handleSubjectChange = (index: number, field: keyof Subject, value: string) => {
     const newSubjects = [...subjects];
     newSubjects[index][field] = value;
@@ -75,7 +163,7 @@ export const SGPACalculator = () => {
     setBranch("");
     setSemester("");
     setSubjects(Array.from({
-      length: 12
+      length: 13
     }, () => ({
       name: "",
       credits: "",
@@ -156,6 +244,16 @@ export const SGPACalculator = () => {
                 </Select>
               </div>
             </div>
+
+            {/* Auto-fill indicator */}
+            {academicYear === "2023-27" && branch === "CSEDS" && semester && parseInt(semester) <= 4 && (
+              <div className="flex items-center gap-2 p-3 bg-primary/10 border border-primary/20 rounded-lg">
+                <FileCheck className="w-5 h-5 text-primary" />
+                <p className="text-sm text-foreground">
+                  <strong>Auto-filled:</strong> Subjects and credits are pre-filled for CSE(DS) 2023-27 batch. Just select your grades!
+                </p>
+              </div>
+            )}
 
             {/* Subjects Table */}
             {academicYear && branch && semester && <motion.div initial={{
