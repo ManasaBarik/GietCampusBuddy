@@ -27,6 +27,7 @@ const gradePoints: {
   "Satisfacto": 0
 };
 export const SGPACalculator = () => {
+  const [academicYear, setAcademicYear] = useLocalStorage<string>("sgpa_academic_year", "");
   const [branch, setBranch] = useLocalStorage<string>("sgpa_branch", "");
   const [semester, setSemester] = useLocalStorage<string>("sgpa_semester", "");
   const [subjects, setSubjects] = useLocalStorage<Subject[]>("sgpa_subjects", Array.from({
@@ -43,8 +44,8 @@ export const SGPACalculator = () => {
     setSubjects(newSubjects);
   };
   const calculateSGPA = () => {
-    if (!branch || !semester) {
-      toast.error("Please select branch and semester");
+    if (!academicYear || !branch || !semester) {
+      toast.error("Please select academic year, branch and semester");
       return;
     }
     let totalCredits = 0;
@@ -70,6 +71,7 @@ export const SGPACalculator = () => {
     toast.success("SGPA calculated successfully!");
   };
   const reset = () => {
+    setAcademicYear("");
     setBranch("");
     setSemester("");
     setSubjects(Array.from({
@@ -106,8 +108,24 @@ export const SGPACalculator = () => {
           </CardHeader>
           
           <CardContent className="space-y-6">
-            {/* Branch and Semester Selection */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Academic Year, Branch and Semester Selection */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="academicYear">Academic Year</Label>
+                <Select value={academicYear} onValueChange={setAcademicYear}>
+                  <SelectTrigger id="academicYear">
+                    <SelectValue placeholder="Select Academic Year" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="2023-27">2023-27</SelectItem>
+                    <SelectItem value="2024-28">2024-28</SelectItem>
+                    <SelectItem value="2025-29">2025-29</SelectItem>
+                    <SelectItem value="2026-30">2026-30</SelectItem>
+                    <SelectItem value="2027-31">2027-31</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
               <div className="space-y-2">
                 <Label htmlFor="branch">Branch</Label>
                 <Select value={branch} onValueChange={setBranch}>
@@ -140,7 +158,7 @@ export const SGPACalculator = () => {
             </div>
 
             {/* Subjects Table */}
-            {branch && semester && <motion.div initial={{
+            {academicYear && branch && semester && <motion.div initial={{
             opacity: 0,
             height: 0
           }} animate={{
@@ -237,7 +255,7 @@ export const SGPACalculator = () => {
                   {sgpa.toFixed(2)}
                 </div>
                 <p className="text-muted-foreground">
-                  {branch} - Semester {semester}
+                  {academicYear} | {branch} - Semester {semester}
                 </p>
                 <div className="pt-4 text-sm text-muted-foreground">
                   {sgpa >= 9 ? "🎉 Outstanding Performance!" : sgpa >= 8 ? "⭐ Excellent Work!" : sgpa >= 7 ? "👍 Good Job!" : sgpa >= 6 ? "✓ Keep it up!" : "📚 Work harder next time!"}
