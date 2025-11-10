@@ -123,6 +123,15 @@ export const SGPACalculator = () => {
         }
         setSubjects(newSubjects);
         toast.success("Subjects auto-filled for your selection!");
+      } else {
+        // Reset to empty subjects for unsupported combinations
+        const emptySubjects = Array.from({ length: 13 }, () => ({
+          name: "",
+          credits: "",
+          grade: ""
+        }));
+        setSubjects(emptySubjects);
+        toast.info("Please enter subject details manually for this selection");
       }
     }
   }, [academicYear, branch, semester]);
