@@ -160,8 +160,9 @@ export default defineConfig(({ mode }) => ({
         ]
       },
       devOptions: {
-        enabled: false,
-        type: "module"
+        enabled: true,
+        type: "module",
+        navigateFallback: "index.html"
       }
     })
   ].filter(Boolean),

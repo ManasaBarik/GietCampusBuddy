@@ -25,23 +25,41 @@ const InstallPWA = () => {
       const isIOSStandalone = (window.navigator as any).standalone === true;
       setIsStandalone(standalone || isIOSStandalone);
       setIsInstalled(standalone || isIOSStandalone);
+      
+      // Debug logging
+      console.log("PWA Install Check:", {
+        standalone,
+        isIOSStandalone,
+        userAgent: navigator.userAgent,
+        displayMode: window.matchMedia("(display-mode: standalone)").matches
+      });
     };
 
     checkInstalled();
 
     // Listen for beforeinstallprompt event
     const handleBeforeInstallPrompt = (e: Event) => {
+      console.log("beforeinstallprompt event fired");
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
+      toast.info("App ready to install!");
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
 
     // Listen for app installed event
     window.addEventListener("appinstalled", () => {
+      console.log("App installed event fired");
       setIsInstalled(true);
       toast.success("App installed successfully!");
     });
+
+    // Check if service worker is registered
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        console.log("Service worker registrations:", registrations.length);
+      });
+    }
 
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
@@ -50,18 +68,45 @@ const InstallPWA = () => {
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) {
-      toast.error("Installation not available. Try using Chrome or Edge browser.");
+      // Detect browser and provide specific guidance
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      
+      if (isIOS || isSafari) {
+        toast.info("On Safari/iOS: Tap the Share button, then 'Add to Home Screen'", {
+          duration: 5000
+        });
+      } else {
+        toast.error("Installation prompt not available. Please use Chrome or Edge browser, or follow the manual instructions below.", {
+          duration: 5000
+        });
+      }
+      
+      console.log("Install prompt not available. Browser info:", {
+        userAgent: navigator.userAgent,
+        isIOS,
+        isSafari
+      });
       return;
     }
 
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
+    try {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      console.log("User install choice:", outcome);
 
-    if (outcome === "accepted") {
-      toast.success("Installation started!");
+      if (outcome === "accepted") {
+        toast.success("Installation started!");
+      } else {
+        toast.info("Installation cancelled");
+      }
+
+      setDeferredPrompt(null);
+    } catch (error) {
+      console.error("Install error:", error);
+      toast.error("Installation failed. Please try again or use manual installation.");
     }
-
-    setDeferredPrompt(null);
   };
 
   const features = [
@@ -155,23 +200,30 @@ const InstallPWA = () => {
                   : "Add to your home screen in one click"}
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex justify-center">
+            <CardContent className="flex flex-col items-center gap-4">
               {isInstalled ? (
                 <div className="flex items-center gap-3 text-success">
                   <Check className="w-8 h-8" />
                   <span className="text-lg font-semibold">App Installed Successfully</span>
                 </div>
               ) : (
-                <Button
-                  variant="professional"
-                  size="lg"
-                  onClick={handleInstallClick}
-                  disabled={!deferredPrompt}
-                  className="gap-2 text-lg px-8"
-                >
-                  <Download className="w-5 h-5" />
-                  Install Now
-                </Button>
+                <>
+                  <Button
+                    variant="professional"
+                    size="lg"
+                    onClick={handleInstallClick}
+                    className="gap-2 text-lg px-8"
+                  >
+                    <Download className="w-5 h-5" />
+                    {deferredPrompt ? "Install Now" : "View Install Instructions"}
+                  </Button>
+                  {!deferredPrompt && (
+                    <p className="text-xs text-muted-foreground text-center max-w-md">
+                      Automatic install not available in this browser. 
+                      Please follow the manual instructions below for your device.
+                    </p>
+                  )}
+                </>
               )}
             </CardContent>
           </Card>
