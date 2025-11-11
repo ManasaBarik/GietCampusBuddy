@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calculator, RotateCcw, GraduationCap, FileCheck } from "lucide-react";
+import { Calculator, RotateCcw, GraduationCap, FileCheck, Download, Copy, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import jsPDF from "jspdf";
 
 interface Subject {
   name: string;
@@ -293,6 +294,145 @@ export const SGPACalculator = () => {
     setSgpa(null);
     toast.info("Calculator reset");
   };
+
+  const exportToPDF = () => {
+    if (sgpa === null) return;
+
+    const doc = new jsPDF();
+    
+    // Title
+    doc.setFontSize(20);
+    doc.setFont("helvetica", "bold");
+    doc.text("SGPA Result Report", 105, 20, { align: "center" });
+    
+    // University name
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    doc.text("GIET University", 105, 30, { align: "center" });
+    
+    // Line separator
+    doc.setLineWidth(0.5);
+    doc.line(20, 35, 190, 35);
+    
+    // Student details section
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text("Academic Information", 20, 45);
+    
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Academic Year: ${academicYear}`, 20, 55);
+    doc.text(`Branch: ${branch === "CSE" ? "Computer Science & Engineering" : branch === "CSEDS" ? "CSE (Data Science)" : "CSE (AI & Machine Learning)"}`, 20, 62);
+    doc.text(`Semester: ${semester}`, 20, 69);
+    
+    // SGPA Result
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("SGPA:", 20, 85);
+    doc.setFontSize(24);
+    doc.setTextColor(41, 128, 185);
+    doc.text(sgpa.toFixed(2), 50, 85);
+    doc.setTextColor(0, 0, 0);
+    
+    // Performance message
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "italic");
+    const performanceMsg = sgpa >= 9 ? "Outstanding Performance!" : 
+                          sgpa >= 8 ? "Excellent Work!" : 
+                          sgpa >= 7 ? "Good Job!" : 
+                          sgpa >= 6 ? "Keep it up!" : 
+                          "Work harder next time!";
+    doc.text(performanceMsg, 20, 95);
+    
+    // Subjects table
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text("Subject Details", 20, 110);
+    
+    let yPos = 120;
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "bold");
+    doc.text("Subject Name", 20, yPos);
+    doc.text("Credits", 130, yPos);
+    doc.text("Grade", 160, yPos);
+    
+    yPos += 7;
+    doc.setFont("helvetica", "normal");
+    
+    subjects.forEach((subject, index) => {
+      if (subject.name && subject.credits && subject.grade) {
+        if (yPos > 270) {
+          doc.addPage();
+          yPos = 20;
+        }
+        
+        const subjectName = subject.name.length > 45 ? subject.name.substring(0, 45) + "..." : subject.name;
+        doc.text(subjectName, 20, yPos);
+        doc.text(subject.credits, 130, yPos);
+        doc.text(subject.grade, 160, yPos);
+        yPos += 7;
+      }
+    });
+    
+    // Footer
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "italic");
+    doc.text(`Generated on: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`, 105, 285, { align: "center" });
+    
+    // Save PDF
+    doc.save(`SGPA_${academicYear}_${branch}_Sem${semester}.pdf`);
+    toast.success("PDF downloaded successfully!");
+  };
+
+  const copyToClipboard = () => {
+    if (sgpa === null) return;
+
+    const subjectsText = subjects
+      .filter(s => s.name && s.credits && s.grade)
+      .map((s, i) => `${i + 1}. ${s.name} - ${s.credits} credits - Grade: ${s.grade}`)
+      .join("\n");
+
+    const text = `
+SGPA Result - GIET University
+========================================
+Academic Year: ${academicYear}
+Branch: ${branch === "CSE" ? "Computer Science & Engineering" : branch === "CSEDS" ? "CSE (Data Science)" : "CSE (AI & Machine Learning)"}
+Semester: ${semester}
+
+SGPA: ${sgpa.toFixed(2)}
+
+Subjects:
+${subjectsText}
+
+Generated on: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}
+    `.trim();
+
+    navigator.clipboard.writeText(text);
+    toast.success("Results copied to clipboard!");
+  };
+
+  const shareResults = async () => {
+    if (sgpa === null) return;
+
+    const shareData = {
+      title: `SGPA Result - ${sgpa.toFixed(2)}`,
+      text: `My SGPA for ${branch} Semester ${semester} (${academicYear}): ${sgpa.toFixed(2)}`,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        toast.success("Shared successfully!");
+      } else {
+        // Fallback to copy
+        copyToClipboard();
+      }
+    } catch (error) {
+      if (error instanceof Error && error.name !== "AbortError") {
+        copyToClipboard();
+      }
+    }
+  };
   return <div className="w-full max-w-5xl mx-auto space-y-8 px-4">
       <motion.div initial={{
       opacity: 0,
@@ -468,7 +608,7 @@ export const SGPACalculator = () => {
             <CardHeader>
               <CardTitle className="text-2xl">Your SGPA Result</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-6">
               <div className="text-center space-y-2">
                 <div className="text-5xl font-bold text-primary">
                   {sgpa.toFixed(2)}
@@ -479,6 +619,37 @@ export const SGPACalculator = () => {
                 <div className="pt-4 text-sm text-muted-foreground">
                   {sgpa >= 9 ? "🎉 Outstanding Performance!" : sgpa >= 8 ? "⭐ Excellent Work!" : sgpa >= 7 ? "👍 Good Job!" : sgpa >= 6 ? "✓ Keep it up!" : "📚 Work harder next time!"}
                 </div>
+              </div>
+
+              {/* Export and Share Buttons */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t">
+                <Button
+                  onClick={exportToPDF}
+                  variant="outline"
+                  className="w-full"
+                  size="sm"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Export PDF
+                </Button>
+                <Button
+                  onClick={copyToClipboard}
+                  variant="outline"
+                  className="w-full"
+                  size="sm"
+                >
+                  <Copy className="w-4 h-4 mr-2" />
+                  Copy Results
+                </Button>
+                <Button
+                  onClick={shareResults}
+                  variant="outline"
+                  className="w-full"
+                  size="sm"
+                >
+                  <Share2 className="w-4 h-4 mr-2" />
+                  Share
+                </Button>
               </div>
             </CardContent>
           </Card>
