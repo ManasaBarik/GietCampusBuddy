@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CSBackground } from "@/components/CSBackground";
-import { Calculator, TrendingUp, Terminal, Code, ArrowRight, Braces, GraduationCap, Trash2 } from "lucide-react";
+import { Calculator, TrendingUp, Terminal, Code, ArrowRight, Braces, GraduationCap, Trash2, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   AlertDialog,
@@ -329,8 +329,39 @@ const Welcome = () => {
           <p>Credits: @barik.unleashed & @SRM</p>
           <p>© {new Date().getFullYear()} All rights reserved</p>
           
+          {/* Quick Links */}
+          <div className="pt-4 flex flex-wrap justify-center gap-4 sm:gap-6">
+            <a 
+              href="https://www.giet.edu/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors hover:underline"
+            >
+              <ExternalLink className="w-3 h-3" />
+              Visit Official Website
+            </a>
+            <a 
+              href="https://gietuerp.in/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors hover:underline"
+            >
+              <ExternalLink className="w-3 h-3" />
+              Visit ERP
+            </a>
+            <a 
+              href="https://gietuonline.in/Login.aspx" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors hover:underline"
+            >
+              <ExternalLink className="w-3 h-3" />
+              Exam Portal
+            </a>
+          </div>
+
           {/* Clear All Data Button */}
-          <div className="pt-2">
+          <div className="pt-4">
             <Button 
               variant="ghost" 
               size="sm"
