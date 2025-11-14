@@ -320,57 +320,79 @@ const Welcome = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="relative z-10 text-center py-8 text-muted-foreground border-t border-border/50"
+        className="relative z-10 py-12 border-t border-border/50 bg-gradient-to-b from-background to-background/80"
       >
-        <p className="text-sm mb-2">
-          Built for students who strive for excellence
-        </p>
-        <div className="text-xs space-y-3">
-          <p>Credits: @barik.unleashed & @SRM</p>
-          <p>© {new Date().getFullYear()} All rights reserved</p>
-          
-          {/* Quick Links */}
-          <div className="pt-4 flex flex-wrap justify-center gap-4 sm:gap-6">
-            <a 
-              href="https://www.giet.edu/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors hover:underline"
-            >
-              <ExternalLink className="w-3 h-3" />
-              Visit Official Website
-            </a>
-            <a 
-              href="https://gietuerp.in/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors hover:underline"
-            >
-              <ExternalLink className="w-3 h-3" />
-              Visit ERP
-            </a>
-            <a 
-              href="https://gietuonline.in/Login.aspx" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-primary hover:text-primary/80 transition-colors hover:underline"
-            >
-              <ExternalLink className="w-3 h-3" />
-              Exam Portal
-            </a>
-          </div>
+        <div className="container mx-auto px-4">
+          {/* Main Footer Content */}
+          <div className="max-w-4xl mx-auto space-y-8">
+            {/* Quick Links Section */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-semibold text-foreground/90 uppercase tracking-wider text-center">
+                Quick Access
+              </h3>
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+                <a 
+                  href="https://www.giet.edu/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 px-4 py-2.5 bg-card/80 hover:bg-card border border-border/50 hover:border-primary/50 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105"
+                >
+                  <ExternalLink className="w-4 h-4 text-primary group-hover:text-primary/80 transition-colors" />
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                    Official Website
+                  </span>
+                </a>
+                <a 
+                  href="https://gietuerp.in/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 px-4 py-2.5 bg-card/80 hover:bg-card border border-border/50 hover:border-primary/50 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105"
+                >
+                  <ExternalLink className="w-4 h-4 text-primary group-hover:text-primary/80 transition-colors" />
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                    ERP Portal
+                  </span>
+                </a>
+                <a 
+                  href="https://gietuonline.in/Login.aspx" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 px-4 py-2.5 bg-card/80 hover:bg-card border border-border/50 hover:border-primary/50 rounded-lg transition-all duration-300 hover:shadow-md hover:scale-105"
+                >
+                  <ExternalLink className="w-4 h-4 text-primary group-hover:text-primary/80 transition-colors" />
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                    Exam Portal
+                  </span>
+                </a>
+              </div>
+            </div>
 
-          {/* Clear All Data Button */}
-          <div className="pt-4">
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={() => setShowClearDialog(true)}
-              className="text-xs text-muted-foreground/60 hover:text-destructive hover:bg-destructive/10 transition-colors"
-            >
-              <Trash2 className="w-3 h-3 mr-1.5" />
-              Clear All Saved Data
-            </Button>
+            {/* Divider */}
+            <div className="border-t border-border/30" />
+
+            {/* Info Section */}
+            <div className="text-center space-y-3">
+              <p className="text-sm text-muted-foreground">
+                Built for students who strive for excellence
+              </p>
+              <div className="text-xs text-muted-foreground/80 space-y-2">
+                <p>Credits: @barik.unleashed & @SRM</p>
+                <p>© {new Date().getFullYear()} GIET University. All rights reserved</p>
+              </div>
+            </div>
+
+            {/* Clear All Data Button */}
+            <div className="flex justify-center pt-2">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={() => setShowClearDialog(true)}
+                className="text-xs text-muted-foreground/60 hover:text-destructive hover:bg-destructive/10 transition-colors"
+              >
+                <Trash2 className="w-3 h-3 mr-1.5" />
+                Clear All Saved Data
+              </Button>
+            </div>
           </div>
         </div>
       </motion.footer>
