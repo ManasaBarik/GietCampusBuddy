@@ -485,6 +485,7 @@ Generated on: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeStr
                     <SelectItem value="CSE">CSE (Computer Science & Engineering)</SelectItem>
                     <SelectItem value="CSEDS">CSE(DS) (Data Science)</SelectItem>
                     <SelectItem value="CSEAIML">CSE(AIML) (AI & Machine Learning)</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
