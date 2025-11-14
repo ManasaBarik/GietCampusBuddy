@@ -6,7 +6,6 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { CSBackground } from "@/components/CSBackground";
 import { Calculator, TrendingUp, Terminal, Code, ArrowRight, Braces, GraduationCap, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import FAQ from "@/components/FAQ";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -314,9 +313,6 @@ const Welcome = () => {
             </div>
           </motion.div>
         </motion.div>
-
-        {/* FAQ Section */}
-        <FAQ />
       </div>
 
       {/* Footer */}

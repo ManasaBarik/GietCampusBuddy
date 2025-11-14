@@ -12,8 +12,6 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// FAQ section added to homepage for SEO
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
